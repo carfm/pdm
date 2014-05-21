@@ -21,6 +21,7 @@ public class FragmentPrestamoDocumento extends Fragment {
 	int seleccion;
 	Button buscar;
 
+	// hola prueba q esto funciona
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class FragmentPrestamoDocumento extends Fragment {
 					.toString(getArguments().getInt(documento)));
 			control.cerrar();
 			String info = "";
-			info = info + "\nTema o titulo : " + d.getTema();
+			info = info + "\nTema o titulo: " + d.getTema();
 			// AUTORES
 			if (d.getIdTipoDocumento() == 1) {
 				info = info + "\nTipo de documento : LIBRO";
