@@ -18,7 +18,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class ControlBaseDatos {
-//PRUEBA !!!!!!!!!!!!!!!!mira esto  aaaaaa
+
 	private final Context context;
 	private DatabaseHelper DBHelper;
 	private SQLiteDatabase db;
