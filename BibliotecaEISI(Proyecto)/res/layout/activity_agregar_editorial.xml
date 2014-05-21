@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewprueba"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombreEditorial" />
+
+        <EditText
+            android:id="@+id/editTextNombreEditorial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10" android:inputType="text"/>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewNoResultados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/idEditorial" />
+
+        <EditText
+            android:id="@+id/editTextIdEditorial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/DetalleDocumento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewPaises" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </TableRow>
+
+    <Button
+        android:id="@+id/butActualizarEditorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/agregarEditorial" 
+        android:onClick="agregarEditorial"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/limpiarEditorial" 
+        android:onClick="limpiarTexto"/>
+
+</TableLayout>

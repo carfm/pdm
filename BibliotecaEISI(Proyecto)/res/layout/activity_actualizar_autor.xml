@@ -1,0 +1,62 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dip"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <TextView android:text="@string/Idautor" />
+
+        <EditText
+            android:id="@+id/editIdautor"
+            android:inputType="text"
+            android:maxLength="7" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/nombreautor" />
+
+        <EditText
+            android:id="@+id/editNombre"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/apellidoautor" />
+
+        <EditText
+            android:id="@+id/editApellido"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/codigopais" />
+
+        <EditText
+            android:id="@+id/editCodigo"
+            android:inputType="text"
+            android:maxLength="5" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:onClick="actualizarAlumno"
+            android:text="@string/actualizar" />
+
+        <TableRow>
+
+            <Button
+                android:onClick="limpiarTexto"
+                android:text="@string/limpiar" />
+        </TableRow>
+
+    </TableRow>
+
+</TableLayout>

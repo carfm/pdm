@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <TextView android:text="@string/textPrestamoConsul" />
+
+        <EditText
+            android:id="@+id/editNumPrestamo"
+            android:inputType="text"
+            android:maxLength="10" />
+    </TableRow>
+
+    <Button
+        android:onClick="aprobarPrestamo"
+        android:text="@string/buttonAprobarPrest" />
+
+    <Button
+        android:onClick="limpiarTexto"
+        android:text="@string/buttonArea2" />
+
+</TableLayout>

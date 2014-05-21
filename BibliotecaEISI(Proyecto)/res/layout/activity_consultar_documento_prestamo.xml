@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <TextView android:text="@string/textPrestamoConsul" />
+
+        <EditText
+            android:id="@+id/editNumPrestamo"
+            android:inputType="text"
+            android:maxLength="7" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/textViewNoResultados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textPrestamoResul" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/textPrestamoResul1" />
+
+        <EditText
+            android:id="@+id/editIniPrestamo"
+            android:cursorVisible="false"
+            android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="date"
+            android:longClickable="false"
+            android:maxLength="10" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/textPrestamoResul2" />
+
+        <EditText
+            android:id="@+id/editFinPrestamo"
+            android:cursorVisible="false"
+            android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="date"
+            android:longClickable="false"
+            android:maxLength="10" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/textPrestamoResul3" />
+
+        <EditText
+            android:id="@+id/editNumLibros"
+            android:cursorVisible="false"
+            android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="text"
+            android:longClickable="false"
+            android:maxLength="5" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/textPrestamoResul4" />
+
+        <EditText
+            android:id="@+id/editEstado"
+            android:cursorVisible="false"
+            android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="text"
+            android:longClickable="false"
+            android:maxLength="10" />
+    </TableRow>
+
+    <Button
+        android:onClick="consultarPrestamo"
+        android:text="@string/buttonAreaConsul" />
+
+    <Button
+        android:onClick="limpiarTexto"
+        android:text="@string/buttonArea2" />
+
+</TableLayout>

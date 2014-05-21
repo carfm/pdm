@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/titleDocConsultar"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_gravity="center"
+        android:layout_marginTop="15dp" />
+
+            <LinearLayout
+                android:id="@+id/layoutid1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp" >
+
+                <TextView
+                    android:id="@+id/DetalleDocumento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txvId" />
+
+                <EditText
+                    android:id="@+id/edtIdDocumento"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutid2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnConsultar"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btnConsultarDocu"
+                    android:onClick="ConsultarDocumento" />
+
+                <Button
+                    android:id="@+id/btnLimpiar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="LimpiarEdits"
+                    android:text="@string/btnLimpiar" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewNoResultados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/txtEditorial" />
+
+            <EditText
+                android:id="@+id/edtEditorial"
+                android:layout_width="295dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:enabled="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="text"
+                android:longClickable="false" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/txtTipoDoc" />
+
+            <EditText
+                android:id="@+id/editTipoDocumento"
+                android:layout_width="295dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:enabled="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="text"
+                android:longClickable="false" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/txtTema" />
+
+            <EditText
+                android:id="@+id/edtTema"
+                android:layout_width="295dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:enabled="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="text"
+                android:longClickable="false" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/txtDescripcion" />
+
+            <EditText
+                android:id="@+id/edtDescripcion"
+                android:layout_width="295dp"
+                android:layout_height="86dp"
+                android:layout_marginLeft="10dp"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:enabled="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="textMultiLine"
+                android:longClickable="false" />
+
+            <LinearLayout
+                android:id="@+id/LayoutId3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/txtAnio" />
+
+                <EditText
+                    android:id="@+id/edtAnio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:cursorVisible="false"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text"
+                    android:longClickable="false" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtNum" />
+
+                <EditText
+                    android:id="@+id/edtPagina"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:cursorVisible="false"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text"
+                    android:longClickable="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LayoutId4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/txtCantidad" />
+
+                <EditText
+                    android:id="@+id/edtCantidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:cursorVisible="false"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text"
+                    android:longClickable="false" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtEdicion" />
+
+                <EditText
+                    android:id="@+id/edtEdicion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:cursorVisible="false"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text"
+                    android:longClickable="false" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

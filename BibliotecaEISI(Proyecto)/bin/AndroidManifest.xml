@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="sv.ues.eisi.fia.bibliotecaeisi"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.InicioSesionActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.MenuSecretariaActivity"
+            android:label="@string/title_activity_menu_secretaria" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.AprobarPrestamosActivity"
+            android:label="@string/title_activity_aprobar_prestamo" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ConsultarPrestamosActivity"
+            android:label="@string/title_activity_consultar_prestamos" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.AgregarUsuarioActivity"
+            android:label="@string/title_activity_agregar_usuario" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.AgregarAreaActivity"
+            android:label="@string/title_activity_agregar_area" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.EliminarAreaActivity"
+            android:label="@string/title_activity_eliminar_area" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ActualizarAreaActivity"
+            android:label="@string/title_activity_actualizar_area" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.AgregarDocumentoActivity"
+            android:label="@string/title_activity_agregar_documento" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ActualizarDocumentoActivity"
+            android:label="@string/title_activity_actualizar_documento" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.EliminarDocumentoActivity"
+            android:label="@string/title_activity_eliminar_documento" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.AgregarEditorialActivity"
+            android:label="@string/title_activity_agregar_editorial" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.EliminarEditorialActivity"
+            android:label="@string/title_activity_eliminar_editorial" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ActualizarEditorialActivity"
+            android:label="@string/title_activity_actualizar_editorial" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ConsultarEditorialActivity"
+            android:label="@string/title_activity_consultar_editorial" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.AgregarAutorActivity"
+            android:label="@string/title_activity_agregar_autor" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.EliminarAutorActivity"
+            android:label="@string/title_activity_eliminar_autor" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ActualizarAutorActivity"
+            android:label="@string/title_activity_actualizar_autor" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ConsultarAutorActivity"
+            android:label="@string/title_activity_consultar_autor" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.AgregarPaisActivity"
+            android:label="@string/title_activity_agregar_pais" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.EliminarPaisActivity"
+            android:label="@string/title_activity_eliminar_pais" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ActualizarPaisActivity"
+            android:label="@string/title_activity_actualizar_pais" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ConsultarPaisActivity"
+            android:label="@string/title_activity_consultar_pais" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ConsultarAreaActivity"
+            android:label="@string/title_activity_consultar_area" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ConsultarDocumentoActivity"
+            android:label="@string/title_activity_consultar_documento" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.PrestarDocumentoActivity"
+            android:label="@string/title_activity_prestar_documento" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ConsultarDocumentoPrestamoActivity"
+            android:label="@string/title_activity_consultar_documento_prestamo" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.HistorialPrestamoActivity"
+            android:label="@string/title_activity_historial_prestamo" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.EntregarDocumentoActivity"
+            android:label="@string/title_activity_entregar_documento" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.HistorialEntregaActivity"
+            android:label="@string/title_activity_historial_entrega" >
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.MenuUsuarioActivity"
+            android:label="@string/title_activity_menu_usuario" >
+        </activity>
+    </application>
+
+</manifest>

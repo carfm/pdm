@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:columnCount="1" >
+
+    <TextView
+        android:id="@+id/DetalleDocumento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewNoResultados"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="56dp"
+        android:text="@string/large_text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textViewNoResultados"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/DetalleDocumento"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/DetalleDocumento"
+        android:layout_marginTop="108dp"
+        android:text="@string/large_text2"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

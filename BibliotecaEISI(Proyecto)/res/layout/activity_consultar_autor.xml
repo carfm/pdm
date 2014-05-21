@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Idautor" />
+
+    <EditText
+        android:id="@+id/editIdautor"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLength="7" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/Consultar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="consultarAutor"
+            android:text="@string/Consultar" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/botonLimpiar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="limpiarTexto"
+        android:text="@string/limpiar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nombreautor" />
+
+    <EditText
+        android:id="@+id/editNombre"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cursorVisible="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="text"
+        android:longClickable="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/apellidoautor" />
+
+    <EditText
+        android:id="@+id/editApellido"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cursorVisible="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="text"
+        android:longClickable="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/codigopais" />
+
+    <EditText
+        android:id="@+id/editCodigo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:cursorVisible="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="text"
+        android:longClickable="false" />
+
+    
+
+</LinearLayout>

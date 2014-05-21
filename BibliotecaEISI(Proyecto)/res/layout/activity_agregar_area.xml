@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:paddingTop="30dip" 
+    android:stretchColumns="1" >
+
+    <TextView
+        android:id="@+id/DetalleDocumento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textArea1" />
+ 
+    <TableRow> 
+
+        <TextView android:text="@string/textArea2" />
+ 
+        <EditText 
+            android:id="@+id/editArea" 
+            android:inputType="text" 
+            android:maxLength="7" />
+</TableRow> 
+ 
+    <TableRow> 
+
+        <TextView android:text="@string/textArea3" />
+ 
+        <EditText 
+            android:id="@+id/editNombre" 
+            android:inputType="text" 
+            android:maxLength="50" /> 
+    </TableRow> 
+ 
+    <TableRow> 
+
+        <TextView android:text="@string/textArea4" />
+ 
+        <EditText 
+            android:id="@+id/editDescripcion" 
+            android:inputType="text" 
+            android:maxLength="200" /> 
+    </TableRow>
+
+   
+
+  <Button
+      android:onClick="agregarArea"
+      android:text="@string/buttonArea1" />
+ 
+ 
+ 
+  <Button
+      android:onClick="limpiarTexto"
+      android:text="@string/buttonArea2" />
+ 
+  
+
+</TableLayout>
