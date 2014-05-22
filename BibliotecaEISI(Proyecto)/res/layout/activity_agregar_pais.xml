@@ -1,16 +1,50 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<?xml version="1.0" encoding="UTF-8"?>
+<TableLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".AgregarPaisActivity" >
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
+    tools:ignore="ButtonStyle" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <TableRow>
 
-</RelativeLayout>
+        <TextView android:text="@string/codigopais" />
+
+        <EditText
+            android:id="@+id/editCodigopais"
+            android:inputType="text"
+            android:maxLength="7" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/nombrepais" />
+
+        <EditText
+            android:id="@+id/editNombrepais"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+
+    <TableRow>
+
+        <TextView android:text="@string/opciones" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:onClick="insertarPais"
+            android:text="@string/insertar" />
+
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+    </TableRow>
+
+</TableLayout>

@@ -1,16 +1,73 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ConsultarPaisActivity" >
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="@string/codigopais" />
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/editCodigo"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLength="7" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/Consultar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="consultar"
+            android:text="@string/Consultar" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/botonLimpiar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="limpiarTexto"
+        android:text="@string/limpiar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nombrepais" />
+
+    <EditText
+        android:id="@+id/editNombrepais"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cursorVisible="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="text"
+        android:longClickable="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/codigopais" />
+
+    <EditText
+        android:id="@+id/editCodigopais"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:cursorVisible="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="text"
+        android:longClickable="false" />
+
+    
+
+</LinearLayout>
