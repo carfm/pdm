@@ -21,6 +21,8 @@ public class ControlBaseDatos {
 	private final Context context;
 	private DatabaseHelper DBHelper;
 	private SQLiteDatabase db;
+	private static final String[] camposPais = new String[] { "codigoPais",
+			"nombrePais" };
 	private final static String[] camposTipoDeDocumento = new String[] {
 			"idtipoDocumento", "nombreDocumento" };
 	private final static String[] camposDocumento = new String[] {
@@ -81,8 +83,8 @@ public class ControlBaseDatos {
 				db.execSQL("CREATE TRIGGER fk_autor_pais BEFORE INSERT ON Autor FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT codigoPais FROM Pais WHERE codigoPais=NEW.codigoPais)IS NULL) THEN RAISE(ABORT,'Pais no existe') END;END;");
 				db.execSQL("CREATE TRIGGER fk_detallePrestamo_documento BEFORE INSERT ON DetallePrestamo FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idDocumento FROM Documento WHERE idDocumento=NEW.idDocumento)IS NULL) THEN RAISE(ABORT,'Documento no existe') END;END;");
 				db.execSQL("CREATE TRIGGER fk_prestamo_usuario BEFORE INSERT ON Prestamo FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idUsuario FROM Usuario WHERE idUsuario=NEW.idUsuario)IS NULL) THEN RAISE(ABORT,'Usuario no existe') END; END;");
-//				db.execSQL("CREATE TRIGGER fk_prestamo_penalizacion BEFORE INSERT ON Prestamo FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idPenalizacion FROM Penalizacion WHERE idPenalizacion=NEW.idPenalizacion)IS NULL)THEN RAISE(ABORT,'Penalizacion no existe')END; END;");
-//				db.execSQL("CREATE TRIGGER [fk_prestamo_secretaria]  BEFORE INSERT ON [Prestamo]  FOR EACH ROW  BEGIN SELECT CASE WHEN((SELECT idSecretaria FROM Secretaria WHERE idSecretaria=NEW.idSecretaria)IS NULL) THEN RAISE(ABORT,'Secretaria no existe') END; END;");
+				// db.execSQL("CREATE TRIGGER fk_prestamo_penalizacion BEFORE INSERT ON Prestamo FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idPenalizacion FROM Penalizacion WHERE idPenalizacion=NEW.idPenalizacion)IS NULL)THEN RAISE(ABORT,'Penalizacion no existe')END; END;");
+				// db.execSQL("CREATE TRIGGER [fk_prestamo_secretaria]  BEFORE INSERT ON [Prestamo]  FOR EACH ROW  BEGIN SELECT CASE WHEN((SELECT idSecretaria FROM Secretaria WHERE idSecretaria=NEW.idSecretaria)IS NULL) THEN RAISE(ABORT,'Secretaria no existe') END; END;");
 				db.execSQL("INSERT INTO USUARIO(idUsuario,nombreUsuario, apellidoUsuario,contrasenia,activo, tipo) VALUES('SM05083','Marvin','Segura','sm12345','1','alumno');");
 				db.execSQL("INSERT INTO USUARIO(idUsuario,nombreUsuario, apellidoUsuario,contrasenia,activo, tipo) VALUES('RR14001','Reina','Ramirez','rr12345','1','secretaria');");
 				db.execSQL("INSERT INTO TipoDeDocumento VALUES(1,'LIBRO');");
@@ -149,28 +151,26 @@ public class ControlBaseDatos {
 			return null;
 		}
 	}
-	
-	 public String insertar(Usuario usuario){ 
-			String regInsertados="Registro Insertado Nº: ";
-			long contador=0;
-			ContentValues user = new ContentValues();
-			user.put("idUsuario", usuario.getIdUsuario());
-			user.put("nombreUsuario", usuario.getNombreUsuario());
-			user.put("apellidoUsuario", usuario.getApellidoUsuario());
-			user.put("contrasenia", usuario.getContrasenia());
-			user.put("activo", usuario.getActivo());
-			user.put("tipo", usuario.getTipo());
-			
-			contador=db.insert("Usuario", null, user);
-			if(contador==-1 || contador==0)
-			{
-			regInsertados= "Error al Insertar el Usuario, Usuario Duplicado. Verificar inserción";
-			}
-			else {
-			regInsertados=regInsertados+contador;
-			}
-			return regInsertados;
-			}
+
+	public String insertar(Usuario usuario) {
+		String regInsertados = "Registro Insertado Nº: ";
+		long contador = 0;
+		ContentValues user = new ContentValues();
+		user.put("idUsuario", usuario.getIdUsuario());
+		user.put("nombreUsuario", usuario.getNombreUsuario());
+		user.put("apellidoUsuario", usuario.getApellidoUsuario());
+		user.put("contrasenia", usuario.getContrasenia());
+		user.put("activo", usuario.getActivo());
+		user.put("tipo", usuario.getTipo());
+
+		contador = db.insert("Usuario", null, user);
+		if (contador == -1 || contador == 0) {
+			regInsertados = "Error al Insertar el Usuario, Usuario Duplicado. Verificar inserción";
+		} else {
+			regInsertados = regInsertados + contador;
+		}
+		return regInsertados;
+	}
 
 	// PAIS
 
@@ -197,18 +197,34 @@ public class ControlBaseDatos {
 		db.update("pais", cv, "codigoPais = ?", id);
 		return "Registro Actualizado Correctamente";
 	}
-	
+
 	public String eliminar(Pais pais) {
 		String regAfectados = "filas afectadas= ";
 		int contador = 0;
-		
+
 		regAfectados = "0";
-	
-		contador += db.delete("Pais", "codigoPais='" + pais.getCodigoPais() + "'",
-				null);
+
+		contador += db.delete("Pais", "codigoPais='" + pais.getCodigoPais()
+				+ "'", null);
 		regAfectados += contador;
 		// }
 		return regAfectados;
+	}
+
+	public Pais consultarPais(String codigo) {
+
+		String[] id = { codigo };
+		Cursor cursor = db.query("Pais", camposPais, "codigoPais = ?", id,
+				null, null, null);
+		if (cursor.moveToFirst()) {
+			Pais pa = new Pais();
+			pa.setCodigoPais(cursor.getString(0));
+			pa.setNombrePais(cursor.getString(1));
+
+			return pa;
+		} else {
+			return null;
+		}
 	}
 
 	// EDITORIAL
@@ -630,7 +646,7 @@ public class ControlBaseDatos {
 
 	public void insertar(DetallePrestamo detallePrestamo) {
 		ContentValues detalle = new ContentValues();
-		detalle.put("idDetallePrestamo",detallePrestamo.getIdDetallePrestamo());
+		detalle.put("idDetallePrestamo", detallePrestamo.getIdDetallePrestamo());
 		detalle.put("idDocumento", detallePrestamo.getIdDocumento());
 		detalle.put("numeroPrestamo", detallePrestamo.getIdPrestamo());
 		try {
@@ -652,15 +668,15 @@ public class ControlBaseDatos {
 		p.put("cantidadLibros", prestamo.getCantidadLibros());
 		p.put("fechaEntrega", prestamo.getFechaEntrega());
 		p.put("idSecretaria", prestamo.getIdSecretaria());
-		p.put("idPenalizacion", prestamo.getIdPenalizacion());		
+		p.put("idPenalizacion", prestamo.getIdPenalizacion());
 		try {
 			db.insertOrThrow("Prestamo", null, p);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
-	
-	//consultas
+
+	// consultas
 
 	public void entregar(String tabla, String iddoc) {
 
@@ -671,8 +687,6 @@ public class ControlBaseDatos {
 				+ " WHERE idDocumento='1'", null);
 
 	}
-
-
 
 	public String llenarBase() {
 

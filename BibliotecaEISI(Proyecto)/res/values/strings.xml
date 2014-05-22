@@ -148,6 +148,9 @@
     <string name="usuario">ID_Usuario</string>
     <string name="editusuario"></string>
     <string name="entregar">Entregar Documento</string>
+    <string name="Codigopais">Codigo Pais</string>
+    <string name="editCodigopais"></string>
+    <string name="nombrepais">Nombre Pais</string>
     
     <string name="textArea1">AGREGAR AREA</string>
     <string name="textArea2">Id Area</string>

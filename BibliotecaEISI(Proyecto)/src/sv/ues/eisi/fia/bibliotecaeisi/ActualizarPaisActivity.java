@@ -1,22 +1,41 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
-import android.os.Bundle;
+import sv.ues.eisi.fia.bibliotecaeisi.clases.Pais;
+import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
 import android.app.Activity;
-import android.view.Menu;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class ActualizarPaisActivity extends Activity {
+	ControlBaseDatos helper;
+	EditText editCodigo;
+	EditText editNombre;
 
+	/** Called when the activity is first created. */
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_actualizar_pais);
+		helper = new ControlBaseDatos(this);
+		editCodigo = (EditText) findViewById(R.id.editCodigopais);
+		editNombre = (EditText) findViewById(R.id.editNombrepais);
+
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.actualizar_pais, menu);
-		return true;
+	public void actualizar(View v) {
+		Pais pais = new Pais();
+		pais.setCodigoPais(editCodigo.getText().toString());
+		pais.setNombrePais(editNombre.getText().toString());
+		helper.abrir();
+		String estado = helper.actualizar(pais);
+		helper.cerrar();
+		Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
 	}
 
+	public void limpiarTexto(View v) {
+		editCodigo.setText("");
+		editNombre.setText("");
+	}
 }

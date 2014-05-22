@@ -10,7 +10,7 @@
         android:text="@string/codigopais" />
 
     <EditText
-        android:id="@+id/editCodigo"
+        android:id="@+id/editCodigo1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:inputType="text"
