@@ -179,5 +179,19 @@
 	<string name="agregarDocumentoPrestamo">Agregar Documento a Prestamo</string>
 	<string name="terminarPrestamoDocumento">Terminar prestamo de documento(s)</string>
     
-
+	<!-- String para USUARIO insert -->
+    <string name="userTitleAgregar">Agregar Usuario</string>
+    <string name="userTxtIdUsuario">ID Usuario</string>
+    <string name="userTxtNombre">Nombre: </string>
+    <string name="userTxtApellido">Apellido:</string>
+    <string name="userTxtContrasenia">Contraseña:</string>
+    <string name="userTxtActivo">Estado:</string>
+    <string name="userTxtSi">Activo</string>
+    <string name="userTxtNo">Inactivo</string>
+    <string name="userTxtTipo">Seleccione Privilegios</string>
+    <string-array name="privilegios_array">
+        <item>Alumno</item>
+        <item>Secretaria</item>
+    </string-array>
+    <string name="btnAgregarUsuarios">Agregar</string>
 </resources>

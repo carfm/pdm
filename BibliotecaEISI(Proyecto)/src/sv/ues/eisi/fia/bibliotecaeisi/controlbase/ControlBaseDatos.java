@@ -149,6 +149,28 @@ public class ControlBaseDatos {
 			return null;
 		}
 	}
+	
+	 public String insertar(Usuario usuario){ 
+			String regInsertados="Registro Insertado Nº: ";
+			long contador=0;
+			ContentValues user = new ContentValues();
+			user.put("idUsuario", usuario.getIdUsuario());
+			user.put("nombreUsuario", usuario.getNombreUsuario());
+			user.put("apellidoUsuario", usuario.getApellidoUsuario());
+			user.put("contrasenia", usuario.getContrasenia());
+			user.put("activo", usuario.getActivo());
+			user.put("tipo", usuario.getTipo());
+			
+			contador=db.insert("Usuario", null, user);
+			if(contador==-1 || contador==0)
+			{
+			regInsertados= "Error al Insertar el Usuario, Usuario Duplicado. Verificar inserción";
+			}
+			else {
+			regInsertados=regInsertados+contador;
+			}
+			return regInsertados;
+			}
 
 	// PAIS
 
