@@ -135,9 +135,9 @@ public final class R {
         public static final int tableRow1=0x7f090022;
         public static final int tableRow2=0x7f090025;
         public static final int tableRow3=0x7f090037;
+        public static final int textIdPrestamo=0x7f09003a;
         public static final int textView1=0x7f090039;
         public static final int textView10=0x7f090008;
-        public static final int textView2=0x7f09003a;
         public static final int textView3=0x7f090011;
         public static final int textView4=0x7f090014;
         public static final int textView5=0x7f090017;
@@ -307,9 +307,11 @@ public final class R {
         public static final int textPrestamoResul3=0x7f06007c;
         public static final int textPrestamoResul4=0x7f06007d;
         public static final int textViewDetalleDocumento=0x7f060083;
+        public static final int textViewIdPrestamo=0x7f060090;
         public static final int textViewInicioSesionContrasena=0x7f060006;
         public static final int textViewInicioSesionUser=0x7f060005;
         public static final int textViewNoResultados=0x7f060082;
+        public static final int textview=0x7f060091;
         public static final int title1=0x7f060037;
         public static final int titleDocActualizar=0x7f060053;
         public static final int titleDocAgregar=0x7f060055;

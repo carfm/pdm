@@ -197,4 +197,6 @@
         <item>Secretaria</item>
     </string-array>
     <string name="btnAgregarUsuarios">Agregar</string>
+    <string name="textViewIdPrestamo">""</string>
+    <string name="textview">TextView</string>
 </resources>

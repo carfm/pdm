@@ -5,6 +5,7 @@ public class DetallePrestamo {
 	private int idDocumento;
 	private int numeroPrestamo;
 	private Integer idDetallePrestamo;
+	private String estado;
 
 	public DetallePrestamo() {
 		// TODO Auto-generated constructor stub
@@ -39,5 +40,13 @@ public class DetallePrestamo {
 
 	public void setIdPrestamo(int idPrestamo) {
 		this.numeroPrestamo = idPrestamo;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 }

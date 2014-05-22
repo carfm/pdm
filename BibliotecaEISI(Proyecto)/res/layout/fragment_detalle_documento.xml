@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.07"
-        android:text="@string/textViewDetalleDocumento" />
+        android:text="@string/textViewDetalleDocumento"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/button1"

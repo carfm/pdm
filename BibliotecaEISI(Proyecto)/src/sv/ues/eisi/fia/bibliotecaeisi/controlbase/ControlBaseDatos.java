@@ -69,7 +69,7 @@ public class ControlBaseDatos {
 				db.execSQL("CREATE TABLE Pais (codigoPais VARCHAR(3)  NOT NULL PRIMARY KEY,nombrePais VARCHAR(50)  NOT NULL);");
 				db.execSQL("CREATE TABLE Penalizacion(idPenalizacion INTEGER PRIMARY KEY NOT NULL,nombrePenalizacion VARCHAR(40) NOT NULL,descripcionPenalizacion"
 						+ " VARCHAR(200) NOT NULL,diasActivacion INTEGER NOT NULL);");
-				db.execSQL("CREATE TABLE DetallePrestamo(idDetallePrestamo INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,idDocumento INTEGER NOT NULL,numeroPrestamo INTEGER NOT NULL"
+				db.execSQL("CREATE TABLE DetallePrestamo(idDetallePrestamo INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,idDocumento INTEGER NOT NULL,numeroPrestamo INTEGER NOT NULL,estado VARCHAR(15)"
 						+ ");");
 				// db.execSQL("CREATE TABLE [Editorial] ([idEditorial] INTEGER  NOT NULL PRIMARY KEY,[nombreEditorial] VARCHAR(70)  NOT NULL);");
 				db.execSQL("CREATE TABLE Prestamo(numeroPrestamo INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,idUsuario VARCHAR(7) NOT NULL,idSecretaria VARCHAR(7),idPenalizacion "
@@ -112,7 +112,7 @@ public class ControlBaseDatos {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
-			db.execSQL("drop table Prestamo");
+			//db.execSQL("drop table Prestamo");
 		}
 	}
 
@@ -565,6 +565,11 @@ public class ControlBaseDatos {
 		} else {
 			c = db.rawQuery("SELECT " + campos + " FROM " + tabla + " WHERE "
 					+ condicion, null);
+		}
+		if(c.moveToFirst()){
+			System.out.println("paso");
+		}else{
+			System.out.println("no paso");
 		}
 		return c;
 	}

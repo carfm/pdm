@@ -26,6 +26,7 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 	private ArrayList<DetallePrestamo> detallesPrestamos;
 	ControlBaseDatos control;
 	private EditText busqueda;
+	private TextView idPrestamo;
 	private ListView lstListado;
 	private TextView resultados;
 	private Documento d;
@@ -56,55 +57,84 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 	}
 
 	public void agregarDocumentoDetalle(View v) {
-		if (detallesPrestamos.isEmpty()) {
-			p = new Prestamo();
-			control.abrir();
-			Cursor c = control.consulta("Prestamo", "MAX(numeroPrestamo)", "");
-			if (c.moveToFirst()) {
-				p.setNumPrestamo(1);
+		boolean repetido = false;
+		if (this.d.getCantidadDisponible() != 0) {
+			if (detallesPrestamos.isEmpty()) {
+				p = new Prestamo();
+				p.setIdUsuario(idUsuario);
 			} else {
-				p.setNumPrestamo(Integer.parseInt(c.getString(0)));
+				// comprobando que no este repetido el documento
+				for (int i = 0; i < detallesPrestamos.size(); i++) {
+					DetallePrestamo d = new DetallePrestamo();
+					d = detallesPrestamos.get(0);
+					if (this.d.getIdDocumento() == d.getIdDocumento()) {
+						repetido = true;
+					}
+				}
 			}
-			p.setIdUsuario(idUsuario);
-			control.cerrar();
+			if (!repetido) {
+				DetallePrestamo det = new DetallePrestamo();
+				det.setIdDocumento(d.getIdDocumento());
+				det.setIdDetallePrestamo(null);
+				detallesPrestamos.add(det);
+				Toast.makeText(this, "Documento agregado exitosamente",
+						Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(this,
+						"Este documento ya esta agregado a su prestamo",
+						Toast.LENGTH_SHORT).show();
+			}
+		}else{
+			Toast.makeText(this,
+					"Este documento no esta disponible",
+					Toast.LENGTH_SHORT).show();
 		}
-		DetallePrestamo det = new DetallePrestamo();
-		det.setIdDocumento(d.getIdDocumento());
-		det.setIdPrestamo(p.getNumPrestamo());
-		det.setIdDetallePrestamo(null);
-		detallesPrestamos.add(det);
-		
-		Toast.makeText(this, "Documento agregado exitosamente",
-				Toast.LENGTH_SHORT).show();
 	}
 
 	public void terminarPrestamoDocumento(View v) {
-		if (!detallesPrestamos.isEmpty()) {
-			p.setAprobado(0);
-			p.setCantidadLibros(detallesPrestamos.size());
-			p.setFechaEntrega("");
-			p.setFechaPrestamo("14-01-12");
-			p.setIdSecretaria(null);
-			p.setIdPenalizacion(null);
-			control.abrir();
-			control.insertar(p);
-			control.cerrar();
-			for (int i = 0; i < detallesPrestamos.size(); i++) {
+		idPrestamo = (TextView) findViewById(R.id.textIdPrestamo);
+		if (idPrestamo.getText().equals("")) {
+			if (!detallesPrestamos.isEmpty()) {
+				p.setNumPrestamo(null);
+				p.setAprobado(0);
+				p.setCantidadLibros(detallesPrestamos.size());
+				p.setFechaEntrega("");
+				p.setFechaPrestamo("14-01-12");
+				p.setIdSecretaria(null);
+				p.setIdPenalizacion(null);
 				control.abrir();
-				control.insertar(detallesPrestamos.get(i));
+				control.insertar(p);
 				control.cerrar();
-			}
-			FragmentManager fragmentManager = getSupportFragmentManager();
-			FragmentDialogConfirmarLibros dialogo = new FragmentDialogConfirmarLibros();
-			dialogo.show(fragmentManager, "tagAlerta");
-		}else{
-			FragmentManager fragmentManager = getSupportFragmentManager();
-			FragmentDialogConfirmarLibros dialogo = new FragmentDialogConfirmarLibros();
-			dialogo.show(fragmentManager, "tagAlerta");
-			//Toast.makeText(this,"No ha seleccionado ningun libro",Toast.LENGTH_SHORT).show();
-		}
+				control.abrir();
+				Cursor c = control.consulta("Prestamo",
+						"MAX(numeroPrestamo) as num", "");
+				int num = Integer.parseInt(c.getString(0));
+				p.setNumPrestamo(num);
+				control.cerrar();
+				for (int i = 0; i < detallesPrestamos.size(); i++) {
+					control.abrir();
+					detallesPrestamos.get(i).setIdPrestamo(p.getNumPrestamo());
+					control.insertar(detallesPrestamos.get(i));
+					control.cerrar();
+				}
+				idPrestamo.setText("Id de prestamo: " + p.getNumPrestamo());
+				detallesPrestamos.clear();
 
-		// Toast.makeText(this,"Prestamo generado exitosamente.\nVaya donde la secretaria para su aprobacion",Toast.LENGTH_SHORT).show();
+				Toast.makeText(
+						this,
+						"Prestamo generado exitosamente.\nVaya donde la "
+								+ "secretaria con el id de prestamo "
+								+ "para su aprobacion", Toast.LENGTH_SHORT)
+						.show();
+			} else {
+				Toast.makeText(this, "No ha seleccionado ningun libro",
+						Toast.LENGTH_SHORT).show();
+			}
+		} else {
+			FragmentManager fragmentManager = getSupportFragmentManager();
+			FragmentDialogConfirmarLibros dialogo = new FragmentDialogConfirmarLibros();
+			dialogo.show(fragmentManager, "tagAlerta");
+		}
 	}
 
 	public void buscar(View v) {
@@ -150,5 +180,11 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 						.addToBackStack(null).commit();
 			}
 		});
+	}
+
+	protected void onPause() {
+		super.onPause();
+		System.out.println("Salio");
+		finish(); // termina la actividad
 	}
 }
