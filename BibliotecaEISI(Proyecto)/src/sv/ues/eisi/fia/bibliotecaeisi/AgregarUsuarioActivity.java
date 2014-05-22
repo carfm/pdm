@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 
 public class AgregarUsuarioActivity extends Activity implements OnItemSelectedListener{
@@ -70,15 +71,16 @@ public class AgregarUsuarioActivity extends Activity implements OnItemSelectedLi
 		// No se Utiliza
 	}
 	
+	@SuppressLint("DefaultLocale")
 	public void AgregarUsuario(View v){
 		//Toast.makeText(this, "Privilegio: "+strPrivilegio +"\nActivo: "+intActivo, Toast.LENGTH_LONG).show();
 		String regInsertados;
-		String user = uIdUsuario.getText().toString().toUpperCase(null);
+		String user = uIdUsuario.getText().toString().toUpperCase();
 		String nombre = uNombre.getText().toString();
 		String apellido = uApellido.getText().toString();
 		String pass = uContrasenia.getText().toString();
 		int activoUsuario = intActivo;
-		String tipoUsuario = strPrivilegio.toLowerCase(null);		
+		String tipoUsuario = strPrivilegio.toLowerCase();		
 		Usuario usuario = new Usuario();
 		usuario.setIdUsuario(user);
 		usuario.setNombreUsuario(nombre);

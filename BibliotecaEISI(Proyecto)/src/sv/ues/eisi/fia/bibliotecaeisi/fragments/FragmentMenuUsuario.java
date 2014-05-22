@@ -82,7 +82,7 @@ public class FragmentMenuUsuario extends Fragment {
 								.forName("sv.ues.eisi.fia.bibliotecaeisi."
 										+ matriz[i-1][pos]);
 						Intent inte = new Intent(context, clase);
-						
+						System.out.println(matriz[i-1][pos]);
 						inte.putExtra("idUsuario", getArguments().getString(IDUSER));
 						startActivity(inte);
 					} catch (ClassNotFoundException e) {

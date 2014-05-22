@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="DefaultLocale">
+        <ignore path="src/sv/ues/eisi/fia/bibliotecaeisi/AgregarUsuarioActivity.java" />
+    </issue>
     <issue id="Typos">
         <ignore path="res/values/strings.xml" />
     </issue>

@@ -6,6 +6,7 @@ import sv.ues.eisi.fia.bibliotecaeisi.clases.DetallePrestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Documento;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Prestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
+import sv.ues.eisi.fia.bibliotecaeisi.fragments.FragmentDialogConfirmarLibros;
 import sv.ues.eisi.fia.bibliotecaeisi.fragments.FragmentPrestamoDocumento;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class PrestarDocumentoActivity extends FragmentActivity {
@@ -71,23 +73,38 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 		det.setIdPrestamo(p.getNumPrestamo());
 		det.setIdDetallePrestamo(null);
 		detallesPrestamos.add(det);
+		
+		Toast.makeText(this, "Documento agregado exitosamente",
+				Toast.LENGTH_SHORT).show();
 	}
 
 	public void terminarPrestamoDocumento(View v) {
-		p.setAprobado(0);
-		p.setCantidadLibros(detallesPrestamos.size());
-		p.setFechaEntrega("");
-		p.setFechaPrestamo("14-01-12");
-		p.setIdSecretaria(null);
-		p.setIdPenalizacion(null);
-		control.abrir();
-		control.insertar(p);
-		control.cerrar();
-		for (int i = 0; i < detallesPrestamos.size(); i++) {
+		if (!detallesPrestamos.isEmpty()) {
+			p.setAprobado(0);
+			p.setCantidadLibros(detallesPrestamos.size());
+			p.setFechaEntrega("");
+			p.setFechaPrestamo("14-01-12");
+			p.setIdSecretaria(null);
+			p.setIdPenalizacion(null);
 			control.abrir();
-			control.insertar(detallesPrestamos.get(i));
+			control.insertar(p);
 			control.cerrar();
+			for (int i = 0; i < detallesPrestamos.size(); i++) {
+				control.abrir();
+				control.insertar(detallesPrestamos.get(i));
+				control.cerrar();
+			}
+			FragmentManager fragmentManager = getSupportFragmentManager();
+			FragmentDialogConfirmarLibros dialogo = new FragmentDialogConfirmarLibros();
+			dialogo.show(fragmentManager, "tagAlerta");
+		}else{
+			FragmentManager fragmentManager = getSupportFragmentManager();
+			FragmentDialogConfirmarLibros dialogo = new FragmentDialogConfirmarLibros();
+			dialogo.show(fragmentManager, "tagAlerta");
+			//Toast.makeText(this,"No ha seleccionado ningun libro",Toast.LENGTH_SHORT).show();
 		}
+
+		// Toast.makeText(this,"Prestamo generado exitosamente.\nVaya donde la secretaria para su aprobacion",Toast.LENGTH_SHORT).show();
 	}
 
 	public void buscar(View v) {
