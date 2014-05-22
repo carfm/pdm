@@ -102,7 +102,9 @@ public class InicioSesionActivity extends Activity {
 						e.printStackTrace();
 					}
 				}
-				/*Aqui irian los Set !!*/
+				
+				editTextUser.setText("");
+				editTextPass.setText("");
 			}else{
 				Toast.makeText(this, "La contraseña no coincide.\nVuelva a ingresarla", Toast.LENGTH_LONG).show();
 			}
