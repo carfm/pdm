@@ -175,6 +175,19 @@ public class ControlBaseDatos {
 		db.update("pais", cv, "codigoPais = ?", id);
 		return "Registro Actualizado Correctamente";
 	}
+	
+	public String eliminar(Pais pais) {
+		String regAfectados = "filas afectadas= ";
+		int contador = 0;
+		
+		regAfectados = "0";
+	
+		contador += db.delete("Pais", "codigoPais='" + pais.getCodigoPais() + "'",
+				null);
+		regAfectados += contador;
+		// }
+		return regAfectados;
+	}
 
 	// EDITORIAL
 	public String insertar(Editorial editorial) {
@@ -624,6 +637,20 @@ public class ControlBaseDatos {
 			System.out.println(e);
 		}
 	}
+	
+	//consultas
+
+	public void entregar(String tabla, String iddoc) {
+
+		// int id = { Integer.parseInt(iddoc) };
+
+		db.rawQuery("UPDATE " + tabla
+				+ " SET cantidadDisponible=cantidadDisponible+'1' "
+				+ " WHERE idDocumento='1'", null);
+
+	}
+
+
 
 	public String llenarBase() {
 
