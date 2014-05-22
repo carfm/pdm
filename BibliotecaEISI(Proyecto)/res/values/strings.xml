@@ -6,11 +6,13 @@
         <item>Biblioteca</item>
         <item>Prestamos</item>
         <item>Usuarios</item>
+        <item>Cerrar Sesion</item>
     </string-array>
     <string-array name="opciones_usuario">
         <item>Inicio</item>
         <item>Prestamos</item>
         <item>Entregas</item>
+        <item>Cerrar Sesion</item>
     </string-array>
     <string-array name="opciones_crud">
         <item>Agregar</item>
@@ -28,6 +30,7 @@
     <string-array name="opciones_prestamos_secretaria">
         <item>Aprobar Prestamos</item>
         <item>Consultar Prestamos</item>
+        <item>Recibir Documentos</item>
     </string-array>
     <string-array name="opciones_usuarios_secretaria">
         <item>Agregar Usuario</item>
@@ -35,12 +38,10 @@
 
     <string-array name="opciones_prestamos_usuario">
         <item>Prestar Documentos</item>
-        <item>Consultar Documentos</item>
         <item>Historial de Prestamos</item>
     </string-array>
     
     <string-array name="opciones_entregas_usuario">
-        <item>Entregar Documento</item>
         <item>Historial de Entregas</item>
     </string-array>
     
@@ -85,9 +86,8 @@
     <string name="title_activity_consultar_area">Consultar Area</string>
     <string name="title_activity_consultar_documento">Consultar Documento</string>
     <string name="title_activity_prestar_documento">Prestar Documentos</string>
-    <string name="title_activity_consultar_documento_prestamo">Consultar Documentos</string>
     <string name="title_activity_historial_prestamo">Historial de Prestamos</string>
-    <string name="title_activity_entregar_documento">Entregar Documento</string>
+    <string name="title_activity_entregar_documento">Recibir Documento</string>
     <string name="title_activity_historial_entrega">Historial de Entregas</string>
     <string name="title_activity_menu_usuario">Menu Usuario</string>
     <string name="nombreEditorial">Nombre Editorial</string>

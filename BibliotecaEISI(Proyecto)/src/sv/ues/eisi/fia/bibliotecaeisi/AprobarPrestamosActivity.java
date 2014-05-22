@@ -22,19 +22,14 @@ public class AprobarPrestamosActivity extends Activity {
 		editNumPrestamo=(EditText) findViewById(R.id.editNumPrestamo);		
 	}
 
-	public void aprobarPrestamo(View v){
-		
+	public void aprobarPrestamo(View v){		
 		Prestamo prest = new Prestamo();
 		prest.setNumPrestamo(Integer.parseInt(editNumPrestamo.getText().toString()));
-		//prest.setIdSecretaria(Integer.parseInt(editIdSecretaria.getText().toString()));
-	//	prest.setIdUsuario(editIdUsuario.getText().toString());
 		prest.setAprobado(1);
-		
 		helper.abrir();
 		String estado = helper.aprobarPrestamo(prest);
 		helper.cerrar();
 		Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
-		
 	}
 	
 	public void limpiarTexto(View v){

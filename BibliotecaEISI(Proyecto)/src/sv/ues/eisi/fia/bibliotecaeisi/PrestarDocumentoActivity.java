@@ -143,7 +143,7 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 		lstListado = (ListView) findViewById(R.id.ListadoBusquedaPrestamo);
 		control.abrir();
 		Cursor c = control.consulta("Documento",
-				"idDocumento,tema,idTipoDocumento", "tema like '"
+				"idDocumento,tema,idTipoDocumento,cantidadDisponible", "tema like '"
 						+ busqueda.getText().toString() + "%'");
 		ArrayList<Documento> l = new ArrayList<Documento>();
 		if (c.moveToFirst()) {
@@ -153,6 +153,7 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 				d.setIdDocumento(Integer.parseInt(c.getString(0)));
 				d.setTema(c.getString(1));
 				d.setIdTipoDocumento(Integer.parseInt(c.getString(2)));
+				d.setCantidadDisponible(Integer.parseInt(c.getString(3)));
 				l.add(d);
 			} while (c.moveToNext());
 		} else {

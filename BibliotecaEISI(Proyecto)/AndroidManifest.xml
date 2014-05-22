@@ -123,15 +123,11 @@
             android:label="@string/title_activity_prestar_documento" >
         </activity>
         <activity
-            android:name="sv.ues.eisi.fia.bibliotecaeisi.ConsultarDocumentoPrestamoActivity"
-            android:label="@string/title_activity_consultar_documento_prestamo" >
-        </activity>
-        <activity
             android:name="sv.ues.eisi.fia.bibliotecaeisi.HistorialPrestamoActivity"
             android:label="@string/title_activity_historial_prestamo" >
         </activity>
         <activity
-            android:name="sv.ues.eisi.fia.bibliotecaeisi.EntregarDocumentoActivity"
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.RecibirDocumentoActivity"
             android:label="@string/title_activity_entregar_documento" >
         </activity>
         <activity

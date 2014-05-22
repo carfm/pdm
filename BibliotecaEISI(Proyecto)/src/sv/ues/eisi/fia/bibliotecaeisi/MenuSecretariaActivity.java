@@ -1,6 +1,9 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
 import sv.ues.eisi.fia.bibliotecaeisi.fragments.FragmentMenuSecretaria;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.*;
@@ -23,29 +26,30 @@ public class MenuSecretariaActivity extends FragmentActivity {
 	private CharSequence mTitle;
 	private String[] titulosOpcionesSecretaria;
 
-	/*Sirve para inicio de Session*/
+	/* Sirve para inicio de Session */
 	TextView txtVnombre;
 	String NombreRecibido;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu_secretaria);
 		Bundle getDatos = getIntent().getExtras();
 		Bundle args = new Bundle();
-		args.putInt(FragmentMenuSecretaria.OPCION,0);
+		args.putInt(FragmentMenuSecretaria.OPCION, 0);
 		NombreRecibido = getDatos.getString("NombreSecre");
-		args.putString(FragmentMenuSecretaria.USER,NombreRecibido);
+		args.putString(FragmentMenuSecretaria.USER, NombreRecibido);
 		Fragment fragment = new FragmentMenuSecretaria();
 		fragment.setArguments(args);
 		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.content_frame, fragment)
-				.commit();
-		/*Inicio de Session*/
-		//txtVnombre = (TextView)findViewById(R.id.textView2);
-/*		Bundle getDatos = getIntent().getExtras();
-		NombreRecibido = getDatos.getString("NombreSecre");
-		txtVnombre.setText(NombreRecibido);*/
+				.replace(R.id.content_frame, fragment).commit();
+		/* Inicio de Session */
+		// txtVnombre = (TextView)findViewById(R.id.textView2);
+		/*
+		 * Bundle getDatos = getIntent().getExtras(); NombreRecibido =
+		 * getDatos.getString("NombreSecre");
+		 * txtVnombre.setText(NombreRecibido);
+		 */
 		mTitle = getTitle();
 		titulosOpcionesSecretaria = getResources().getStringArray(
 				R.array.opciones_secretaria);
@@ -128,20 +132,51 @@ public class MenuSecretariaActivity extends FragmentActivity {
 
 	private void selectItem(int position) {
 		// update the main content by replacing fragments
-		Bundle args = new Bundle();
-		args.putInt(FragmentMenuSecretaria.OPCION, position);
-		args.putString(FragmentMenuSecretaria.USER,NombreRecibido);
-		Fragment fragment = new FragmentMenuSecretaria();
-		fragment.setArguments(args);
-		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.content_frame, fragment)
-				.commit();
-		// update selected item and title, then close the drawer
-		mDrawerList.setItemChecked(position, true);
-		setTitle(titulosOpcionesSecretaria[position]);
-		mDrawerLayout.closeDrawer(mDrawerList);
+		if(position<4){
+			Bundle args = new Bundle();
+			args.putInt(FragmentMenuSecretaria.OPCION, position);
+			args.putString(FragmentMenuSecretaria.USER,NombreRecibido);
+			Fragment fragment = new FragmentMenuSecretaria();
+			fragment.setArguments(args);
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.content_frame, fragment)
+					.commit();
+			// update selected item and title, then close the drawer
+			mDrawerList.setItemChecked(position, true);
+			setTitle(titulosOpcionesSecretaria[position]);
+			mDrawerLayout.closeDrawer(mDrawerList);
+		}else{
+			AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);  
+	        dialogo1.setTitle("Cerrar Sesion");  
+	        dialogo1.setMessage("¿ De verdad desea Cerrar Sesion ?");            
+	        dialogo1.setCancelable(false);  
+	        dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {  
+	            public void onClick(DialogInterface dialogo1, int id) {  
+	                aceptar();  
+	            }  
+	        });  
+	        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {  
+	            public void onClick(DialogInterface dialogo1, int id) {  
+	            	//return;
+	            }  
+	        });            
+	        dialogo1.show();
+		}		
 	}
-
+	
+	public void aceptar() {
+		super.onPause();
+		System.out.println("Salio");
+		finish(); // termina la actividad
+		try {
+			Intent inte = new Intent(this,InicioSesionActivity.class);
+			this.startActivity(inte);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+	
+    
 	@Override
 	public void setTitle(CharSequence title) {
 		mTitle = title;

@@ -1,6 +1,9 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
 import sv.ues.eisi.fia.bibliotecaeisi.fragments.FragmentMenuUsuario;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.*;
@@ -23,22 +26,22 @@ public class MenuUsuarioActivity extends FragmentActivity {
 	private String[] titulosOpcionesUsuario;
 	String NombreRecibido;
 	String Carnet;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu_usuario);
 		Bundle getDatos = getIntent().getExtras();
 		Bundle args = new Bundle();
-		args.putInt(FragmentMenuUsuario.OPCION,0);
+		args.putInt(FragmentMenuUsuario.OPCION, 0);
 		NombreRecibido = getDatos.getString("NombreAlu");
 		Carnet = getDatos.getString("idUser");
-		args.putString(FragmentMenuUsuario.USER,NombreRecibido);
-		args.putString(FragmentMenuUsuario.IDUSER,Carnet);
+		args.putString(FragmentMenuUsuario.USER, NombreRecibido);
+		args.putString(FragmentMenuUsuario.IDUSER, Carnet);
 		Fragment fragment = new FragmentMenuUsuario();
 		fragment.setArguments(args);
 		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.content_frame2, fragment)
-				.commit();
+				.replace(R.id.content_frame2, fragment).commit();
 		mTitle = getTitle();
 		titulosOpcionesUsuario = getResources().getStringArray(
 				R.array.opciones_usuario);
@@ -121,20 +124,52 @@ public class MenuUsuarioActivity extends FragmentActivity {
 
 	private void selectItem(int position) {
 		// update the main content by replacing fragments
-		Bundle args = new Bundle();
-		args.putInt(FragmentMenuUsuario.OPCION, position);
-		args.putString(FragmentMenuUsuario.USER,NombreRecibido);
-		args.putString(FragmentMenuUsuario.IDUSER,Carnet);
-		Fragment fragment = new FragmentMenuUsuario();
-		fragment.setArguments(args);
-		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.content_frame2, fragment)
-				.commit();
-		// update selected item and title, then close the drawer
-		mDrawerList.setItemChecked(position, true);
-		setTitle(titulosOpcionesUsuario[position]);
-		mDrawerLayout.closeDrawer(mDrawerList);
+		if (position < 3) {
+			Bundle args = new Bundle();
+			args.putInt(FragmentMenuUsuario.OPCION, position);
+			args.putString(FragmentMenuUsuario.USER, NombreRecibido);
+			args.putString(FragmentMenuUsuario.IDUSER, Carnet);
+			Fragment fragment = new FragmentMenuUsuario();
+			fragment.setArguments(args);
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.content_frame2, fragment).commit();
+			// update selected item and title, then close the drawer
+			mDrawerList.setItemChecked(position, true);
+			setTitle(titulosOpcionesUsuario[position]);
+			mDrawerLayout.closeDrawer(mDrawerList);
+		} else {
+			AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+			dialogo1.setTitle("Cerrar Sesion");
+			dialogo1.setMessage("¿ De verdad desea Cerrar Sesion ?");
+			dialogo1.setCancelable(false);
+			dialogo1.setPositiveButton("Confirmar",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialogo1, int id) {
+							aceptar();
+						}
+					});
+			dialogo1.setNegativeButton("Cancelar",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialogo1, int id) {
+							//return;
+						}
+					});
+			dialogo1.show();
+		}
 	}
+
+	public void aceptar() {
+		super.onPause();
+		System.out.println("Salio");
+		finish(); // termina la actividad
+		try {
+			Intent inte = new Intent(this, InicioSesionActivity.class);
+			this.startActivity(inte);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	@Override
 	public void setTitle(CharSequence title) {

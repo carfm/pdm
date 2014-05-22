@@ -102,7 +102,7 @@ public class InicioSesionActivity extends Activity {
 						e.printStackTrace();
 					}
 				}
-				
+				//onPause();
 				editTextUser.setText("");
 				editTextPass.setText("");
 			}else{
@@ -115,4 +115,9 @@ public class InicioSesionActivity extends Activity {
 		}
 	}
 	
+	protected void onPause() {
+		super.onPause();
+		System.out.println("Salio");
+		finish(); // termina la actividad
+	}
 }

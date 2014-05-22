@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class FragmentMenuSecretaria extends Fragment {
 
-	final String matriz[][] =new String[][] {{"AprobarPrestamosActivity", "ConsultarPrestamosActivity"},{"AgregarUsuarioActivity",""}};
+	final String matriz[][] =new String[][] {{"AprobarPrestamosActivity", "ConsultarPrestamosActivity","RecibirDocumentoActivity"},{"AgregarUsuarioActivity","",""}};
 	private String[] datos;
 	private String[] datos1;
 	private String[] datos2;
