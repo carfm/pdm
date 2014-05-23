@@ -47,7 +47,7 @@ public class AgregarUsuarioActivity extends Activity implements OnItemSelectedLi
 		radio1.setChecked(true);
 		intActivo = 1;
 		rbg = (RadioGroup)findViewById(R.id.grupo);
-		spPrivilegios = (Spinner) findViewById(R.id.spinner1);
+		spPrivilegios = (Spinner) findViewById(R.id.spinnerAutores);
         adapter =ArrayAdapter.createFromResource(this, R.array.privilegios_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spPrivilegios.setAdapter(adapter);
