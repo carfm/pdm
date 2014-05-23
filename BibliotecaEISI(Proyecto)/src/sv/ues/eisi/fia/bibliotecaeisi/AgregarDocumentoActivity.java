@@ -48,6 +48,11 @@ public class AgregarDocumentoActivity extends Activity {
 	
 	public void insertarDocumento(View v){
 		String regInsertados;
+		if( !edtIdDocumento.getText().toString().equals("") && !edtIdEditorial.getText().toString().equals("")
+				&& !edtTipoDocumento.getText().toString().equals("") && !edtTema.getText().toString().equals("")
+				&& !edtDescripcion.getText().toString().equals("") && !edtAnio.getText().toString().equals("")
+				&& !edtPaginas.getText().toString().equals("") && !edtCantidad.getText().toString().equals("")
+				&& !edtEdicion.getText().toString().equals("")){
 		int documento = (int)Integer.valueOf(edtIdDocumento.getText().toString());
 		int editorial = (int)Integer.valueOf(edtIdEditorial.getText().toString());
 		int tipo = (int)Integer.valueOf(edtTipoDocumento.getText().toString());
@@ -71,6 +76,9 @@ public class AgregarDocumentoActivity extends Activity {
 		regInsertados=BDhelper.insertar(docu);
 		BDhelper.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+		}else{
+			Toast.makeText(this, "Campos vacios. Debe llenar todos los campos.",Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	public void Limpiarfields(View v){
