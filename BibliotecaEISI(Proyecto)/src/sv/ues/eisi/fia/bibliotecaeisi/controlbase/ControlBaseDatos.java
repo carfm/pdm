@@ -249,6 +249,7 @@ public class ControlBaseDatos {
 		ContentValues e = new ContentValues();
 		e.put("nombreEditorial", editorial.getNombreEditorial());
 		e.put("idEditorial", editorial.getIdEditorial());
+		e.put("codigoPais", editorial.getCodigoPais());
 		contador = db.insert("Editorial", null, e);
 		if (contador == -1 || contador == 0) {
 			regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
@@ -681,20 +682,13 @@ public class ControlBaseDatos {
 	// prestamo
 
 	public void insertar(Prestamo prestamo) {
-		ContentValues p = new ContentValues();
-		p.put("numeroPrestamo", prestamo.getNumPrestamo());
-		p.put("aprobado", prestamo.getAprobado());
-		p.put("idUsuario", prestamo.getIdUsuario());
-		p.put("fechaPrestamo", prestamo.getFechaPrestamo());
-		p.put("cantidadLibros", prestamo.getCantidadLibros());
-		p.put("fechaEntrega", prestamo.getFechaEntrega());
-		p.put("idSecretaria", prestamo.getIdSecretaria());
-		p.put("idPenalizacion", prestamo.getIdPenalizacion());
-		try {
-			db.insertOrThrow("Prestamo", null, p);
-		} catch (Exception e) {
+		try{
+			Cursor c = db.rawQuery("INSERT INTO Prestamo VALUES(NULL,'"+prestamo.getIdUsuario()
+					+"',NULL,NULL,date('now'),NULL,"+prestamo.getCantidadLibros()+","+prestamo.getAprobado()+")",null);
+			System.out.println(c.moveToFirst());
+		}catch(Exception e){
 			System.out.println(e);
-		}
+		}		
 	}
 
 	// consultas
@@ -714,6 +708,17 @@ public class ControlBaseDatos {
 		try {
 			Cursor c = db.rawQuery("UPDATE " + tabla + " SET " + campos
 					+ " WHERE " + condicion, null);
+			System.out.println(c.moveToFirst());
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public void insertar(String tabla, String campos) {
+
+		try {
+			Cursor c = db.rawQuery("INSERT INTO " + tabla + " VALUES( " + campos
+					+ ")",null);
 			System.out.println(c.moveToFirst());
 		} catch (Exception e) {
 			System.out.println(e);

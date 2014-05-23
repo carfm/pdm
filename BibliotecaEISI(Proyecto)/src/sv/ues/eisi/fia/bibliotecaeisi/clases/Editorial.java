@@ -2,7 +2,7 @@ package sv.ues.eisi.fia.bibliotecaeisi.clases;
 
 public class Editorial {
 
-	private int idEditorial;
+	private Integer idEditorial;
 	private String nombreEditorial;
 	private String codigoPais;
 
@@ -10,16 +10,16 @@ public class Editorial {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Editorial(int idEditorial, String nombreEditorial) {
+	public Editorial(Integer idEditorial, String nombreEditorial) {
 		this.idEditorial = idEditorial;
 		this.nombreEditorial = nombreEditorial;
 	}
 
-	public int getIdEditorial() {
+	public Integer getIdEditorial() {
 		return idEditorial;
 	}
 
-	public void setIdEditorial(int idEditorial) {
+	public void setIdEditorial(Integer idEditorial) {
 		this.idEditorial = idEditorial;
 	}
 

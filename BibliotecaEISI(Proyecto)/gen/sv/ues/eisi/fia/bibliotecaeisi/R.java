@@ -186,8 +186,7 @@ public final class R {
         public static final int fragment_inicio=0x7f030021;
         public static final int fragment_menu_secretaria=0x7f030022;
         public static final int fragment_menu_usuario=0x7f030023;
-        public static final int fragment_resultado_busqueda=0x7f030024;
-        public static final int fragment_submenu_secretaria=0x7f030025;
+        public static final int fragment_submenu_secretaria=0x7f030024;
     }
     public static final class menu {
         public static final int actualizar_area=0x7f080000;

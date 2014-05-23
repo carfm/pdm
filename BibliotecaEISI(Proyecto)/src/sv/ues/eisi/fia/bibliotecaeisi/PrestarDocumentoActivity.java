@@ -100,7 +100,7 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 				p.setAprobado(0);
 				p.setCantidadLibros(detallesPrestamos.size());
 				p.setFechaEntrega("");
-				p.setFechaPrestamo("14-01-12");
+				p.setFechaPrestamo("");
 				p.setIdSecretaria(null);
 				p.setIdPenalizacion(null);
 				control.abrir();

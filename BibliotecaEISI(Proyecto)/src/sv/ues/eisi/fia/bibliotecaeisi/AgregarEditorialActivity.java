@@ -1,7 +1,7 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
 ///holaa
-import java.util.LinkedList;
+import java.util.ArrayList;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Editorial;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Pais;
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
@@ -23,8 +23,8 @@ public class AgregarEditorialActivity extends Activity {
 	EditText editNombreEditorial;
 	EditText editId;
 	Spinner cbxPaises;
-	LinkedList<Pais> paises;
-	private int posicion;
+	ArrayList<Pais> paises;
+	Pais p;
 	String codigo;
 
 	@Override
@@ -36,8 +36,9 @@ public class AgregarEditorialActivity extends Activity {
 		editId = (EditText) findViewById(R.id.editTextIdEditorial);
 		cbxPaises = (Spinner) findViewById(R.id.spinner1);
 		helper.abrir();
+		p = new Pais();
 		Cursor c = helper.consulta("Pais", "codigoPais,nombrePais", "");
-		paises = new LinkedList<Pais>();
+		paises = new ArrayList<Pais>();
 		if (c.moveToFirst()) {
 			do {
 				Pais p = new Pais();
@@ -57,8 +58,8 @@ public class AgregarEditorialActivity extends Activity {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View arg1,
 					int pos, long arg3) {
-				System.out.println(pos);
-				posicion = pos;
+				
+				p = (Pais) parent.getAdapter().getItem(pos);
 			}
 
 			@Override
@@ -68,7 +69,7 @@ public class AgregarEditorialActivity extends Activity {
 			}
 
 		});
-		//Toast.makeText(this, posicion, Toast.LENGTH_SHORT).show();
+		// Toast.makeText(this, posicion, Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
@@ -79,18 +80,23 @@ public class AgregarEditorialActivity extends Activity {
 	}
 
 	public void agregarEditorial(View v) {
-		Editorial e = new Editorial();
-		e.setIdEditorial(Integer.parseInt(editId.getText().toString()));
-		e.setNombreEditorial(this.editNombreEditorial.getText().toString());
-		e.setCodigoPais(paises.get(posicion).getCodigoPais());		
-		helper.abrir();
-		String regInsertados = helper.insertar(e);
-		helper.cerrar();
-		Toast.makeText(this,regInsertados, Toast.LENGTH_SHORT).show();
+		if (!this.editNombreEditorial.getText().equals("")) {
+			Editorial e = new Editorial();
+			e.setIdEditorial(Integer.parseInt(this.editId.getText().toString()));
+			e.setNombreEditorial(this.editNombreEditorial.getText().toString());
+			e.setCodigoPais(p.getCodigoPais());
+			System.out.println(p.getCodigoPais());
+			helper.abrir();
+			String regInsertados = helper.insertar(e);
+			helper.cerrar();
+			Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(this, "Campos vacios", Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	public void limpiarTexto(View v) {
-		editId.setText("");
+		// editId.setText("");
 		editNombreEditorial.setText("");
 	}
 }
