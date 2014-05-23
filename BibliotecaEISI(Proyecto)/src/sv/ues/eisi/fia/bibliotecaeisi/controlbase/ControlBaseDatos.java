@@ -715,7 +715,7 @@ public class ControlBaseDatos {
 			p.setIdPenalizacion(cursor.getInt(0));
 			p.setNombrePenaliza(cursor.getString(1));
 			p.setDescricionPenaliza(cursor.getString(2));
-			p.setDiasPenalizacion(cursor.getInt(0));
+			p.setDiasPenalizacion(cursor.getInt(3));
 			return p;
 		} else {
 			return null;

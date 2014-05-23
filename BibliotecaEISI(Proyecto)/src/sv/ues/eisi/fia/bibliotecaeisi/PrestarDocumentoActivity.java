@@ -61,19 +61,27 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 
 	public void agregarDocumentoDetalle(View v) {
 		boolean repetido = false;
+		boolean sinPenalizacion = true;
+		Penalizacion pena;
 		control.abrir();
-		Cursor c = control.consulta("Prestamo",
-				"idPrestamo,fechaEntrega,idPenalizacion", "idUsuario='"
-						+ idUsuario + "' and idPenalizacion is not null");
+		Cursor c = control
+				.consulta(
+						"Prestamo",
+						"numeroPrestamo,fechaEntrega,idPenalizacion,date('now') as fecha",
+						"idUsuario='" + idUsuario
+								+ "' and idPenalizacion is not null");
 		if (c.moveToFirst()) {
-			
 			String fEntrega[];
 			Calendar ca = Calendar.getInstance();
 			Calendar fechaInicio;
 			Calendar fechaFin = new GregorianCalendar();
-			fechaFin.set(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH);
+			// fechaFin.set(2014,5,31);
+			fEntrega = c.getString(3).split("-");
+			fechaFin.set(Integer.parseInt(fEntrega[0]),
+					Integer.parseInt(fEntrega[1]),
+					Integer.parseInt(fEntrega[2]));
 			do {
-				Penalizacion p = control.consultarPenalizacion(c.getInt(2));
+				pena = control.consultarPenalizacion(c.getInt(2));
 				fEntrega = c.getString(1).split("-");
 				// fecha inicio
 				fechaInicio = new GregorianCalendar();
@@ -83,42 +91,49 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 				ca.setTimeInMillis(fechaFin.getTime().getTime()
 						- fechaInicio.getTime().getTime());
 				int dias = ca.get(Calendar.DAY_OF_YEAR);
-			} while (c.moveToNext());
-				
-			
-		} else {
 
+				if (dias <= pena.getDiasPenalizacion() && dias != 365) {
+					sinPenalizacion = false;
+				}
+			} while (c.moveToNext());
 		}
-		control.cerrar();
-		if (this.d.getCantidadDisponible() != 0) {
-			if (detallesPrestamos.isEmpty()) {
-				p = new Prestamo();
-				p.setIdUsuario(idUsuario);
-			} else {
-				// comprobando que no este repetido el documento
-				for (int i = 0; i < detallesPrestamos.size(); i++) {
-					DetallePrestamo d = new DetallePrestamo();
-					d = detallesPrestamos.get(0);
-					if (this.d.getIdDocumento() == d.getIdDocumento()) {
-						repetido = true;
+		if (sinPenalizacion) {
+			control.cerrar();
+			if (this.d.getCantidadDisponible() != 0) {
+				if (detallesPrestamos.isEmpty()) {
+					p = new Prestamo();
+					p.setIdUsuario(idUsuario);
+				} else {
+					// comprobando que no este repetido el documento
+					for (int i = 0; i < detallesPrestamos.size(); i++) {
+						DetallePrestamo d = new DetallePrestamo();
+						d = detallesPrestamos.get(0);
+						if (this.d.getIdDocumento() == d.getIdDocumento()) {
+							repetido = true;
+						}
 					}
 				}
-			}
-			if (!repetido) {
-				DetallePrestamo det = new DetallePrestamo();
-				det.setIdDocumento(d.getIdDocumento());
-				det.setIdDetallePrestamo(null);
-				det.setEstado("NO ENTREGADO");
-				detallesPrestamos.add(det);
-				Toast.makeText(this, "Documento agregado exitosamente",
-						Toast.LENGTH_SHORT).show();
+				if (!repetido) {
+					DetallePrestamo det = new DetallePrestamo();
+					det.setIdDocumento(d.getIdDocumento());
+					det.setIdDetallePrestamo(null);
+					det.setEstado("NO ENTREGADO");
+					detallesPrestamos.add(det);
+					Toast.makeText(this, "Documento agregado exitosamente",
+							Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(this,
+							"Este documento ya esta agregado a su prestamo",
+							Toast.LENGTH_SHORT).show();
+				}
 			} else {
-				Toast.makeText(this,
-						"Este documento ya esta agregado a su prestamo",
+				Toast.makeText(this, "Este documento no esta disponible",
 						Toast.LENGTH_SHORT).show();
 			}
 		} else {
-			Toast.makeText(this, "Este documento no esta disponible",
+			Toast.makeText(
+					this,
+					"Tiene penalizacion por entrega tardia no puede prestar libros",
 					Toast.LENGTH_SHORT).show();
 		}
 	}
