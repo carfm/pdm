@@ -4,13 +4,9 @@ import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Documento;
 import android.os.Bundle;
 import android.app.Activity;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 public class AgregarDocumentoActivity extends Activity {
