@@ -54,7 +54,7 @@
             android:text="@string/txtViewPaises" />
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/spinnerAutores"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
