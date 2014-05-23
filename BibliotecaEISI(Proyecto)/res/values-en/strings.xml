@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="opciones_secretaria">
-        <item>Inicio</item>
-        <item>Biblioteca</item>
-        <item>Prestamos</item>
-        <item>Usuarios</item>
-        <item>Cerrar Sesion</item>
+    <string-array name="secretary_options">
+        <item>Home</item>
+        <item>Library</item>
+        <item>Loans</item>
+        <item>Users</item>
+        <item>Log Out</item>
     </string-array>
-    <string-array name="opciones_usuario">
-        <item>Inicio</item>
-        <item>Prestamos</item>
-        <item>Entregas</item>
-        <item>Cerrar Sesion</item>
+    <string-array name="User_Options">
+        <item>Home</item>
+        <item>Loans</item>
+        <item>Delivery</item>
+        <item>Log Out</item>
     </string-array>
-    <string-array name="opciones_crud">
-        <item>Agregar</item>
-        <item>Eliminar</item>
-        <item>Actualizar</item>
-        <item>Consultar</item>
+    <string-array name="Crud_Options">
+        <item>Add</item>
+        <item>Remove</item>
+        <item>Update</item>
+        <item>Check</item>
     </string-array>
-    <string-array name="opciones_bibloteca">
-        <item>Areas de aplicacion</item>
-        <item>Documentos</item>
-        <item>Editoriales</item>
-        <item>Autores</item>
-        <item>Paises</item>
+    <string-array name="library_options">
+        <item> Areas of application</item>
+        <item>Documents</item>
+        <item>Editorials</item>
+        <item>Authors</item>
+        <item>Countries</item>
     </string-array>
-    <string-array name="opciones_prestamos_secretaria">
-        <item>Aprobar Prestamos</item>
-        <item>Consultar Prestamos</item>
-        <item>Recibir Documentos</item>
+    <string-array name="secretary_loan_options">
+        <item>Approve Loans</item>
+        <item>Check Loans</item>
+        <item>receive Documents</item>
     </string-array>
-    <string-array name="opciones_usuarios_secretaria">
-        <item>Agregar Usuario</item>
+    <string-array name="secretary_user_options">
+        <item>Add User</item>
     </string-array>
 
-    <string-array name="opciones_prestamos_usuario">
-        <item>Prestar Documentos</item>
-        <item>Historial de Prestamos</item>
+    <string-array name="User _loans_options">
+        <item>provide Documents</item>
+        <item>History Loans</item>
     </string-array>
     
-    <string-array name="opciones_entregas_usuario">
-        <item>Historial de Entregas</item>
+    <string-array name="deliveries_user_options">
+        <item>Deliveries History</item>
     </string-array>
     
     <string name="drawer_open">Open navigation drawer</string>
@@ -50,153 +50,153 @@
     <string name="app_name">Biblioteca EISI</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="textViewInicioSesionUser">Usuario:</string>
-    <string name="textViewInicioSesionContrasena">Contrasena:</string>
-    <string name="buttonBase">Generar Base</string>
-    <string name="buttonInicioSesionIniciar">Iniciar Sesion Secretaria</string>
-    <string name="buttonInicioSesionIniciarU">Iniciar Sesion Usuario</string>
-    <string name="buttonMenuBibliotecaAreas">Areas de aplicacion</string>
-    <string name="buttonMenuBibliotecaDocumentos">Documentos</string>
-    <string name="buttonMenuBibliotecaEditoriales">Editoriales</string>
-    <string name="buttonMenuBibliotecaAutores">Autores</string>
-    <string name="buttonMenuBibliotecaPaises">Paises</string>
-    <string name="title_activity_menu_secretaria">Menu Secretaria</string>
-    <string name="title_activity_menu_biblioteca">Biblioteca</string>
-    <string name="title_activity_aprobar_prestamo">Aprobar Prestamos</string>
+    <string name="textViewInicioSesionUser">User:</string>
+    <string name="textViewInicioSesionContrasena">Password:</string>
+    <string name="buttonBase">generate Base</string>
+    <string name="buttonInicioSesionIniciar">Log In Secretary</string>
+    <string name="buttonInicioSesionIniciarU">User Log In</string>
+    <string name="buttonMenuBibliotecaAreas">Areas of application</string>
+    <string name="buttonMenuBibliotecaDocumentos">Documents</string>
+    <string name="buttonMenuBibliotecaEditoriales">Editorials </string>
+    <string name="buttonMenuBibliotecaAutores">Authors</string>
+    <string name="buttonMenuBibliotecaPaises">Countries</string>
+    <string name="title_activity_menu_secretaria">Menu Secretary </string>
+    <string name="title_activity_menu_biblioteca">Library</string>
+    <string name="title_activity_aprobar_prestamo">Approve Loans</string>
     <string name="title_activity_consultar_prestamos">Consultar Prestamos</string>
-    <string name="title_activity_agregar_usuario">Agregar Usuario</string>
-    <string name="title_activity_agregar_area">Agregar Area</string>
-    <string name="title_activity_eliminar_area">Eliminar Area</string>
-    <string name="title_activity_actualizar_area">Actualizar Area</string>
-    <string name="title_activity_agregar_documento">Agregar Documento</string>
-    <string name="title_activity_actualizar_documento">Actualizar Documento</string>
-    <string name="title_activity_eliminar_documento">Eliminar Documento</string>
-    <string name="title_activity_agregar_editorial">Agregar Editorial</string>
-    <string name="title_activity_eliminar_editorial">Eliminar Editorial</string>
-    <string name="title_activity_actualizar_editorial">Actualizar Editorial</string>
-    <string name="title_activity_consultar_editorial">Consultar Editorial</string>
-    <string name="title_activity_agregar_autor">Agregar Autor</string>
-    <string name="title_activity_eliminar_autor">Eliminar Autor</string>
-    <string name="title_activity_actualizar_autor">Actualizar Autor</string>
-    <string name="title_activity_consultar_autor">Consultar Autor</string>
-    <string name="title_activity_agregar_pais">Agregar Pais</string>
-    <string name="title_activity_eliminar_pais">Eliminar Pais</string>
-    <string name="title_activity_actualizar_pais">Actualizar Pais</string>
-    <string name="title_activity_consultar_pais">Consultar Pais</string>
-    <string name="title_activity_consultar_area">Consultar Area</string>
-    <string name="title_activity_consultar_documento">Consultar Documento</string>
-    <string name="title_activity_prestar_documento">Prestar Documentos</string>
-    <string name="title_activity_historial_prestamo">Historial de Prestamos</string>
-    <string name="title_activity_entregar_documento">Recibir Documento</string>
-    <string name="title_activity_historial_entrega">Historial de Entregas</string>
-    <string name="title_activity_menu_usuario">Menu Usuario</string>
-    <string name="nombreEditorial">Nombre Editorial</string>
-    <string name="agregarEditorial">Agregar Editorial</string>
-    <string name="limpiarEditorial">Limpiar campos</string>
+    <string name="title_activity_agregar_usuario"> Add User</string>
+    <string name="title_activity_agregar_area">Add Area</string>
+    <string name="title_activity_eliminar_area">Delete Area</string>
+    <string name="title_activity_actualizar_area">Area Update</string>
+    <string name="title_activity_agregar_documento">Add Document</string>
+    <string name="title_activity_actualizar_documento">Update Document</string>
+    <string name="title_activity_eliminar_documento">Delete Document</string>
+    <string name="title_activity_agregar_editorial">Add Editorial</string>
+    <string name="title_activity_eliminar_editorial">Delete Editorial</string>
+    <string name="title_activity_actualizar_editorial">Editorial Update</string>
+    <string name="title_activity_consultar_editorial">Check Editorial</string>
+    <string name="title_activity_agregar_autor">Add Author</string>
+    <string name="title_activity_eliminar_autor">Delete Author </string>
+    <string name="title_activity_actualizar_autor">Update Author </string>
+    <string name="title_activity_consultar_autor">Check Author </string>
+    <string name="title_activity_agregar_pais">Add Country</string>
+    <string name="title_activity_eliminar_pais">Delete Country</string>
+    <string name="title_activity_actualizar_pais">Update Country</string>
+    <string name="title_activity_consultar_pais">Update Country</string>
+    <string name="title_activity_consultar_area">Check Area</string>
+    <string name="title_activity_consultar_documento">Check Document</string>
+    <string name="title_activity_prestar_documento">Provide Documents</string>
+    <string name="title_activity_historial_prestamo">History Loans</string>
+    <string name="title_activity_entregar_documento">Receive Document</string>
+    <string name="title_activity_historial_entrega">Delivery Historys</string>
+    <string name="title_activity_menu_usuario">User Menu</string>
+    <string name="nombreEditorial">Name Editorial</string>
+    <string name="agregarEditorial">Add Editorial</string>
+    <string name="limpiarEditorial">Clean fields</string>
     <string name="idEditorial">id Editorial</string>
-    <string name="actualizarEditorial">Actualizar Editorial</string>
-    <string name="btnEliminarEditorial">Eliminar Editorial</string>
+    <string name="actualizarEditorial">Update Editorial</string>
+    <string name="btnEliminarEditorial">Delete Editorial</string>
     <string name="texViewPrueba"></string>
-    <string name="buscar">Buscar</string>
+    <string name="buscar">Search</string>
     <string name="checkbox">CheckBox</string>
     
-    <string name="title1">Inicio de Sesion al Sistema</string>
-    <string name="txtUser">Usuario: </string>
-    <string name="txtPass">Contraseña:</string>
-    <string name="promtUser">Usuario</string>
-    <string name="promtPass">Contraseña</string>
-    <string name="btnIniciar">Iniciar Sesion</string>
-    <string name="saludoSecre">Bienvenida Secretaria</string>
-    <string name="saludoAlum">Bienvenido Alumno</string>
-    <string name="btnSalirAlum">Salir</string>
-    <string name="btnSalirSecre">Salir X</string>
-    <string name="large_text">Bienvenido a Biblioteca EISI</string>
+    <string name="title1">Start of Session System</string>
+    <string name="txtUser">User: </string>
+    <string name="txtPass">Password:</string>
+    <string name="promtUser">User</string>
+    <string name="promtPass">Password</string>
+    <string name="btnIniciar">Login</string>
+    <string name="saludoSecre">Welcome Secretary</string>
+    <string name="saludoAlum">Welcome Student </string>
+    <string name="btnSalirAlum">Exit</string>
+    <string name="btnSalirSecre">Exit X</string>
+    <string name="large_text">Welcome to EISI Library</string>
     <string name="large_text2"></string>
-    <string name="txvId">ID Documento:</string>
-    <string name="btnConsultarDocu">Consultar</string>
-    <string name="btnLimpiar">Limpiar</string>
-    <string name="txtEditorial">Id de Editorial</string>
-    <string name="txtTipoDoc">Tipo de Documento</string>
-    <string name="txtTema">Tema</string>
-    <string name="txtDescripcion">Descripcion:</string>
-    <string name="txtAnio">Año:</string>
-    <string name="txtNum">Numero de Pag.:</string>
-    <string name="txtCantidad">Cantidad de Libros:</string>
-    <string name="txtEdicion">Edicion:</string>
-    <string name="btnInsertarDocumento">Agregar Documento</string>
-    <string name="btnActExtraer">Extraer</string>
-    <string name="btnActualizar">Actualizar</string>
-    <string name="btnEliminar">Eliminar</string>
-    <string name="titleDocEliminar">Eliminar Documento</string>
-    <string name="titleDocActualizar">Actualuzar Documento</string>
-    <string name="titleDocConsultar">Consultar Documento</string>
-    <string name="titleDocAgregar">Agregar Documento</string>
+    <string name="txvId">ID Document:</string>
+    <string name="btnConsultarDocu">Check</string>
+    <string name="btnLimpiar">Clear</string>
+    <string name="txtEditorial">Id Editorial</string>
+    <string name="txtTipoDoc">Document Type</string>
+    <string name="txtTema">Topic</string>
+    <string name="txtDescripcion">Description:</string>
+    <string name="txtAnio">Year:</string>
+    <string name="txtNum">Number of Pages :</string>
+    <string name="txtCantidad">Number of Book:</string>
+    <string name="txtEdicion">Issue:</string>
+    <string name="btnInsertarDocumento">Add Document</string>
+    <string name="btnActExtraer">Extract</string>
+    <string name="btnActualizar">Update</string>
+    <string name="btnEliminar">Delete</string>
+    <string name="titleDocEliminar">Delete Document</string>
+    <string name="titleDocActualizar">Update Document</string>
+    <string name="titleDocConsultar">Check Document</string>
+    <string name="titleDocAgregar">Add Document</string>
     
     <string name="Idautor">IdAutor</string>
-    <string name="nombreautor">Nombre:</string>
-    <string name="apellidoautor">Apellido:</string>
-    <string name="codigopais">CodigoPais:</string>
-    <string name="opciones">Opciones:</string>
-    <string name="insertar">Insertar</string>
-    <string name="limpiar">Limpiar</string>
-    <string name="eliminar">Eliminar</string>
-    <string name="actualizar">Actualizar</string>
-    <string name="Consultar">Consultar</string>
+    <string name="nombreautor">Name:</string>
+    <string name="apellidoautor">Surname:</string>
+    <string name="codigopais">CodeCountry:</string>
+    <string name="opciones">Options:</string>
+    <string name="insertar">Add</string>
+    <string name="limpiar">Clear</string>
+    <string name="eliminar">Delete</string>
+    <string name="actualizar">Update</string>
+    <string name="Consultar">Check</string>
     <string name="listViewConsultaPrestamo"></string>
-    <string name="Iddoc">ID_Documento</string>
+    <string name="Iddoc">ID_Document</string>
     <string name="editDoc"></string>
-    <string name="usuario">ID_Usuario</string>
+    <string name="usuario">ID_User</string>
     <string name="editusuario"></string>
-    <string name="entregar">Entregar Documento</string>
-    <string name="Codigopais">Codigo Pais</string>
+    <string name="entregar">Deliver Document o</string>
+    <string name="Codigopais">Code Country</string>
     <string name="editCodigopais"></string>
-    <string name="nombrepais">Nombre Pais</string>
+    <string name="nombrepais">Name Country</string>
     
-    <string name="textArea1">AGREGAR AREA</string>
+    <string name="textArea1">ADD AREA</string>
     <string name="textArea2">Id Area</string>
-	<string name="textArea3">Nombre</string>
-	<string name="textArea4">Descripcion</string>
-	<string name="buttonArea1">Agregar</string>
-	<string name="buttonArea2">Limpiar</string>
-	<string name="textAreaAct">ACTUALIZAR AREA</string>
-	<string name="buttonAreaAct">Actualizar</string>
-	<string name="textAreaConsul">CONSULTAR AREA</string>
-	<string name="textAreaConsul1">Resultado:</string>
-	<string name="buttonAreaConsul">Consultar</string>
+	<string name="textArea3">Name</string>
+	<string name="textArea4">Description</string>
+	<string name="buttonArea1">Addr</string>
+	<string name="buttonArea2">Clear</string>
+	<string name="textAreaAct">UPDATE AREA</string>
+	<string name="buttonAreaAct">Update</string>
+	<string name="textAreaConsul">CHECK AREA</string>
+	<string name="textAreaConsul1">Result:</string>
+	<string name="buttonAreaConsul">Check</string>
 	<string name="textAreaEli1">Id Area:</string>
-	<string name="buttonAreaEli">Eliminar</string>
-	<string name="textPrestamoConsul">Numero Prestamo:</string>
-	<string name="textPrestamoResul">Resultados:</string>
-	<string name="buttonPrestamoConsul">Consultar</string>
-	<string name="buttonPrestamoConsul1">Limpiar</string>
-	<string name="textPrestamoResul1">Fecha de Prestamo:</string>
-	<string name="textPrestamoResul2">Fecha de Entrega:</string>
-	<string name="textPrestamoResul3">Libros Prestado:</string>
-	<string name="textPrestamoResul4">Estado:</string>
-	<string name="buttonAprobarPrest">Aprobar</string>
-	<string name="textAprobar1">Id Secretaria:</string>
-	<string name="textAprobar2">Id Usuario:</string>
-	<string name="txtViewPaises">Pais</string>
+	<string name="buttonAreaEli">Delete</string>
+	<string name="textPrestamoConsul">Loan Number:</string>
+	<string name="textPrestamoResul">Results:</string>
+	<string name="buttonPrestamoConsul">Check</string>
+	<string name="buttonPrestamoConsul1">Clearr</string>
+	<string name="textPrestamoResul1">Date of Loan:</string>
+	<string name="textPrestamoResul2">Delivery Date:</string>
+	<string name="textPrestamoResul3">Books Borrowed:</string>
+	<string name="textPrestamoResul4">State:</string>
+	<string name="buttonAprobarPrest">Approve</string>
+	<string name="textAprobar1">Id Secretary:</string>
+	<string name="textAprobar2">Id User:</string>
+	<string name="txtViewPaises">Country</string>
 	<string name="textViewNoResultados"></string>
 	<string name="textViewDetalleDocumento"></string>
-	<string name="agregarDocumentoPrestamo">Agregar Documento a Prestamo</string>
-	<string name="terminarPrestamoDocumento">Terminar prestamo de documento(s)</string>
+	<string name="agregarDocumentoPrestamo">Add to Loan Document</string>
+	<string name="terminarPrestamoDocumento">Complete loan document(s)</string>
     
 	<!-- String para USUARIO insert -->
-    <string name="userTitleAgregar">Agregar Usuario</string>
-    <string name="userTxtIdUsuario">ID Usuario</string>
-    <string name="userTxtNombre">Nombre: </string>
-    <string name="userTxtApellido">Apellido:</string>
+    <string name="userTitleAgregar">Add User</string>
+    <string name="userTxtIdUsuario">ID User</string>
+    <string name="userTxtNombre">Name: </string>
+    <string name="userTxtApellido">Surname:</string>
     <string name="userTxtContrasenia">Contraseña:</string>
-    <string name="userTxtActivo">Estado:</string>
-    <string name="userTxtSi">Activo</string>
-    <string name="userTxtNo">Inactivo</string>
-    <string name="userTxtTipo">Seleccione Privilegios</string>
+    <string name="userTxtActivo">Etate:</string>
+    <string name="userTxtSi">Active</string>
+    <string name="userTxtNo">Inactive</string>
+    <string name="userTxtTipo">Select Benefits</string>
     <string-array name="privilegios_array">
-        <item>Alumno</item>
-        <item>Secretaria</item>
+        <item>Student</item>
+        <item>Secretary</item>
     </string-array>
-    <string name="btnAgregarUsuarios">Agregar</string>
+    <string name="btnAgregarUsuarios">Add</string>
     <string name="textViewIdPrestamo">""</string>
     <string name="textview">TextView</string>
 </resources>
