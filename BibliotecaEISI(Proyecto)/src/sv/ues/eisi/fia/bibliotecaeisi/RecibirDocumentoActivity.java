@@ -45,7 +45,7 @@ public class RecibirDocumentoActivity extends Activity {
 		getMenuInflater().inflate(R.menu.entregar_documento, menu);
 		control = new ControlBaseDatos(this);
 		lstListado = (ListView) findViewById(R.id.listView1);
-		
+
 		lstListado.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> list, View view, int pos,
@@ -87,18 +87,15 @@ public class RecibirDocumentoActivity extends Activity {
 			if (control.verificarPrestamo(p)) {
 				control.cerrar();
 				actualizarLista();
-				
+
 			} else {
 				Toast.makeText(this, "No existe el id del prestamo",
 						Toast.LENGTH_SHORT).show();
-				// no existe
 			}
-			
+
 		} else {
 			Toast.makeText(this, "Campo vacio", Toast.LENGTH_SHORT).show();
-			// campos vacios
 		}
-
 	}
 
 	public void aceptar() {
@@ -136,13 +133,14 @@ public class RecibirDocumentoActivity extends Activity {
 						android.R.layout.simple_list_item_1, l);
 				lstListado.setAdapter(adaptador);
 			} else {
+				control.actualizar("Prestamo", "fechaEntrega=date('now')",
+						"numeroPrestamo=" + p.getNumPrestamo());
 				resultados
 						.setText("El prestamo ya no tiene ningun documento pendiente");
 			}
 		} else {
-			resultados
-			.setText("El prestamo no ha sido aprobado aun");
+			resultados.setText("El prestamo no ha sido aprobado aun");
 		}
-		control.cerrar();		
+		control.cerrar();
 	}
 }
