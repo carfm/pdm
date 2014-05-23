@@ -1,7 +1,8 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
 import java.util.ArrayList;
-
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Documento;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Prestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
@@ -135,6 +136,36 @@ public class RecibirDocumentoActivity extends Activity {
 			} else {
 				control.actualizar("Prestamo", "fechaEntrega=date('now')",
 						"numeroPrestamo=" + p.getNumPrestamo());
+				Cursor f = control.consulta("Prestamo",
+						"fechaEntrega,fechaPrestamo",
+						"numeroPrestamo=" + p.getNumPrestamo());
+				if (f.moveToFirst()) {
+					String fPrestamo[] = f.getString(1).split("-");
+					String fEntrega[] = f.getString(0).split("-");
+					Calendar ca = Calendar.getInstance();
+					// fecha inicio
+					Calendar fechaInicio = new GregorianCalendar();
+					fechaInicio.set(Integer.parseInt(fPrestamo[0]),
+							Integer.parseInt(fPrestamo[1]),
+							Integer.parseInt(fPrestamo[2]));
+					// fecha fin
+					Calendar fechaFin = new GregorianCalendar();
+					fechaFin.set(Integer.parseInt(fEntrega[0]),
+							Integer.parseInt(fEntrega[1]),
+							Integer.parseInt(fEntrega[2]));
+					// restamos las fechas como se puede ver son de tipo
+					// Calendar,
+					// debemos obtener el valor long con getTime.getTime.
+					ca.setTimeInMillis(fechaFin.getTime().getTime()
+							- fechaInicio.getTime().getTime());
+					int dias = ca.get(Calendar.DAY_OF_YEAR);
+					if(dias!=365){
+						if(dias>3){
+							// hay penalizacion
+							//control.actualizar("Prestamo", "fechaEntrega=date('now')","numeroPrestamo=" + p.getNumPrestamo());
+						}
+					}
+				}
 				resultados
 						.setText("El prestamo ya no tiene ningun documento pendiente");
 			}

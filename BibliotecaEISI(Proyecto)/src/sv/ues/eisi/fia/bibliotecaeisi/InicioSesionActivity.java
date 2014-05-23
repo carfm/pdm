@@ -1,5 +1,6 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
+
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Usuario;
 import android.os.Bundle;
@@ -103,6 +104,7 @@ public class InicioSesionActivity extends Activity {
 					}
 				}
 				//onPause();
+				
 				editTextUser.setText("");
 				editTextPass.setText("");
 			}else{

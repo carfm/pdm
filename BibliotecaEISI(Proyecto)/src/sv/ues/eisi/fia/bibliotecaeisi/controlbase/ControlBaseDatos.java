@@ -21,6 +21,7 @@ public class ControlBaseDatos {
 	private final Context context;
 	private DatabaseHelper DBHelper;
 	private SQLiteDatabase db;
+
 	private static final String[] camposPais = new String[] { "codigoPais",
 			"nombrePais" };
 	private final static String[] camposTipoDeDocumento = new String[] {
@@ -75,7 +76,7 @@ public class ControlBaseDatos {
 				db.execSQL("CREATE TABLE Prestamo(numeroPrestamo INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,idUsuario VARCHAR(7) NOT NULL,idSecretaria VARCHAR(7),idPenalizacion "
 						+ "INTEGER,fechaPrestamo DATE NOT NULL,fechaEntrega DATE,cantidadLibros INTEGER NOT NULL,aprobado INTEGER NOT NULL);");
 				db.execSQL("CREATE TABLE Autor(idAutor INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,codigoPais VARCHAR(3) NOT NULL,nombreAutor VARCHAR(30) NOT NULL,apellidoAutor VARCHAR(30) "
-						+ "NOT NULL,CONSTRAINT fk_autor_pais FOREIGN  KEY (codigoPais) REFERENCES Pais(codigoPais) ON DELETE RESTRICT );");
+						+ "NOT NULL);");
 				db.execSQL("CREATE TABLE enfocado(idDocumento INTEGER NOT NULL,idArea INTEGER NOT NULL,PRIMARY KEY(idDocumento,idArea) CONSTRAINT fk_enfocado_documento FOREIGN "
 						+ "KEY(idDocumento)REFERENCES Documento(idDocumento) ON DELETE RESTRICT,CONSTRAINT fk_enfocado_area FOREIGN KEY (idArea) REFERENCES Area(idArea) ON DELETE RESTRICT);");
 				db.execSQL("CREATE TABLE tiene(idAutor INTEGER NOT NULL,idDocumento INTEGER NOT NULL,PRIMARY KEY(idAutor,idDocumento) CONSTRAINT fk_tiene_documento FOREIGN KEY (idDocumento) "
@@ -84,11 +85,6 @@ public class ControlBaseDatos {
 				db.execSQL("CREATE TRIGGER fk_detallePrestamo_documento BEFORE INSERT ON DetallePrestamo FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idDocumento FROM Documento WHERE idDocumento=NEW.idDocumento)IS NULL) THEN RAISE(ABORT,'Documento no existe') END;END;");
 				db.execSQL("CREATE TRIGGER fk_prestamo_usuario BEFORE INSERT ON Prestamo FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idUsuario FROM Usuario WHERE idUsuario=NEW.idUsuario)IS NULL) THEN RAISE(ABORT,'Usuario no existe') END; END;");
 				db.execSQL("CREATE TRIGGER [disminuir_disponibilidad] BEFORE INSERT ON [DetallePrestamo]FOR EACH ROW BEGIN UPDATE Documento SET cantidadDisponible=cantidadDisponible-1 WHERE Documento.idDocumento=new.idDocumento; END");
-				// CREATE TRIGGER [aumentar_disponibilidad] AFTER UPDATE ON
-				// [DetallePrestamo] FOR EACH ROW WHEN new.estado='ENTREGADO'
-				// BEGIN UPDATE Documento SET
-				// cantidadDisponible=cantidadDisponible+1 WHERE
-				// Documento.idDocumento=new.idDocumento;END
 				db.execSQL("CREATE TRIGGER [aumentar_disponibilidad] AFTER UPDATE ON [DetallePrestamo] FOR EACH ROW WHEN new.estado='ENTREGADO' BEGIN UPDATE Documento SET cantidadDisponible=cantidadDisponible+1 WHERE Documento.idDocumento=new.idDocumento;END");
 				db.execSQL("CREATE TRIGGER fk_documento_tipoDocumento BEFORE INSERT ON Documento FOR EACH ROW BEGIN  SELECT CASE WHEN((SELECT idtipoDocumento FROM TipoDeDocumento WHERE idtipoDocumento=NEW.idtipoDocumento)IS NULL) THEN RAISE(ABORT,'Tipo de Documento no existe') END;END;");
 				db.execSQL("CREATE TRIGGER fk_detallePrestamo_Prestamo BEFORE INSERT ON DetallePrestamo FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT numeroPrestamo FROM Prestamo WHERE numeroPrestamo=NEW.numeroPrestamo)IS NULL) THEN RAISE(ABORT,'Numero de Prestamo no existe')END;END;");
@@ -98,8 +94,14 @@ public class ControlBaseDatos {
 				db.execSQL("CREATE TRIGGER fk_enfocado_Area BEFORE INSERT ON enfocado FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idArea FROM Area WHERE idArea=NEW.idArea)IS NULL) THEN RAISE(ABORT,'Area no existe') END;END;");
 				db.execSQL("CREATE TRIGGER fk_tiene_Documento BEFORE INSERT ON tiene FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idDocumento FROM Documento WHERE idDocumento=NEW.idDocumento)IS NULL) THEN RAISE(ABORT,'Documento no existe')END;END;");
 				db.execSQL("CREATE TRIGGER fk_tiene_Autor BEFORE INSERT ON tiene FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idAutor FROM Autor WHERE idAutor=NEW.idAutor)IS NULL) THEN RAISE(ABORT,'Autor no existe') END; END;");
-				// db.execSQL("");
-				db.execSQL("INSERT INTO USUARIO(idUsuario,nombreUsuario, apellidoUsuario,contrasenia,activo, tipo) VALUES('FM10005','Carlos','Fuentes','q','1','alumno');");
+				db.execSQL("CREATE TRIGGER [area_delete]BEFORE DELETE ON [Area]FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idArea FROM enfocado WHERE idArea=OLD.idArea)IS not NULL) THEN RAISE(ABORT,'No puede borrar padre porque hay tablas hijas') END;END");
+				db.execSQL("CREATE TRIGGER [autor_delete]BEFORE DELETE ON [Autor]FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idAutor FROM tiene WHERE idAutor=OLD.idAutor)IS not NULL) THEN RAISE(ABORT,'No puede borrar padre porque hay tablas hijas') END;END");
+				db.execSQL("CREATE TRIGGER [documento_delete]BEFORE DELETE ON [Documento]FOR EACH ROW BEGIN SELECT CASE WHEN(((SELECT idDocumento FROM enfocado WHERE idDocumento=OLD.idDocumento)IS not NULL) or ((SELECT idDocumento FROM tiene WHERE idDocumento=OLD.idDocumento)IS not NULL) or ((SELECT idDocumento FROM DetallePrestamo WHERE idDocumento=OLD.idDocumento)IS not NULL)) THEN RAISE(ABORT,'No puede borrar padre porque hay tablas hijas') END;END");
+				db.execSQL("CREATE TRIGGER [editorial_delete]BEFORE DELETE ON [Editorial]FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idEditorial FROM Documento WHERE idEditorial=OLD.idEditorial)IS not NULL) THEN RAISE(ABORT,'No puede borrar padre porque hay tablas hijas') END;END");
+				db.execSQL("CREATE TRIGGER [pais_delete] BEFORE DELETE ON [Pais]FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT codigoPais FROM Autor WHERE codigoPais=OLD.codigoPais)IS not NULL) THEN RAISE(ABORT,'No puede borrar padre porque hay tablas hijas') END;END");
+				db.execSQL("CREATE TRIGGER [tipoDocumento_delete] BEFORE DELETE ON [tipoDeDocumento] FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idtipoDocumento FROM Documento WHERE idtipoDocumento=OLD.idtipoDocumento)IS not NULL) THEN RAISE(ABORT,'No puede borrar padre porque hay tablas hijas') END;END");
+				db.execSQL("INSERT INTO Penalizacion VALUES(1,'Entrego despues de 3 dias','',3)");
+				db.execSQL("INSERT INTO USUARIO(idUsuario,nombreUsuario, apellidoUsuario,contrasenia,activo, tipo) VALUES('FM10005','Carlos','Fuentes','fm12345','1','alumno');");
 				db.execSQL("INSERT INTO USUARIO(idUsuario,nombreUsuario, apellidoUsuario,contrasenia,activo, tipo) VALUES('SM05083','Marvin','Segura','sm12345','1','alumno');");
 				db.execSQL("INSERT INTO USUARIO(idUsuario,nombreUsuario, apellidoUsuario,contrasenia,activo, tipo) VALUES('RR14001','Reina','Ramirez','rr12345','1','secretaria');");
 				db.execSQL("INSERT INTO TipoDeDocumento VALUES(1,'LIBRO');");
@@ -112,13 +114,20 @@ public class ControlBaseDatos {
 				db.execSQL("INSERT INTO Area VALUES(NULL,'Quimica','');");
 				db.execSQL("INSERT INTO Area VALUES(NULL,'Matematicas','');");
 				db.execSQL("INSERT INTO Editorial VALUES(1,'Pearson','MEX');");
-				db.execSQL("INSERT INTO Editorial VALUES(2,'Pearson','ESA');");
-				db.execSQL("INSERT INTO Autor VALUES(NULL,'ESP','Carlos','Fuentes');");
+				db.execSQL("INSERT INTO Editorial VALUES(2,'Mc Graw Hill','ESP');");
+				db.execSQL("INSERT INTO Editorial VALUES(3,'Universidad de El Salvador','ESA');");
+				db.execSQL("INSERT INTO Autor VALUES(NULL,'ESP','Carlos','Martinez');");
 				db.execSQL("INSERT INTO Autor VALUES(NULL,'MEX','Anibal','Sibrian');");
 				db.execSQL("INSERT INTO Documento VALUES(NULL,1,1,'Fisica Universitaria','','2012','400',3,1);");
-				db.execSQL("INSERT INTO Documento VALUES(NULL,1,2,'Fisica Resnick','','2012','400',3,1);");
+				db.execSQL("INSERT INTO Documento VALUES(NULL,2,1,'Fisica Resnick','','2012','400',3,1);");
+				db.execSQL("INSERT INTO Documento VALUES(NULL,3,2,'Sistema Bibliotecario EISI','Trabajo de graduacion','2014','200',1,1);");
 				db.execSQL("INSERT INTO tiene VALUES(1,1);");
 				db.execSQL("INSERT INTO tiene VALUES(2,1);");
+				db.execSQL("INSERT INTO Prestamo VALUES(NULL,'FM10005',NULL,NULL,'2014-05-20',NULL,1,1);");
+				db.execSQL("INSERT INTO DetallePrestamo VALUES(NULL,1,1,'NO ENTREGADO');");
+				db.execSQL("INSERT INTO Prestamo VALUES(NULL,'FM10005',NULL,1,'2014-05-20','2014-05-24',1,1);");
+				db.execSQL("INSERT INTO DetallePrestamo VALUES(NULL,1,2,'ENTREGADO');");
+				//db.execSQL("");				
 			} catch (SQLException e) {
 				// e.printStackTrace();
 				System.out.println(e);
@@ -214,16 +223,16 @@ public class ControlBaseDatos {
 	}
 
 	public String eliminar(Pais pais) {
-		String regAfectados = "filas afectadas= ";
-		int contador = 0;
-
-		regAfectados = "0";
-
-		contador += db.delete("Pais", "codigoPais='" + pais.getCodigoPais()
-				+ "'", null);
-		regAfectados += contador;
+		//String regAfectados = "filas afectadas= ";		
+		return borrar("Pais", "codigoPais='"+pais.getCodigoPais()+"'");
+/*		try {
+			Cursor c = db.rawQuery("DELETE FROM pais where codigoPais='"+pais.getCodigoPais()+"'",null);
+			System.out.println(c.moveToFirst());
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		// }
-		return regAfectados;
+*/		
 	}
 
 	public Pais consultarPais(String codigo) {
@@ -270,13 +279,14 @@ public class ControlBaseDatos {
 
 	public String eliminar(Editorial editorial) {
 		// validaciones
-		String regAfectados = "filas afectadas= ";
+/*		String regAfectados = "filas afectadas= ";
 		int contador = 0;
 		regAfectados = "0";
 		contador += db.delete("editorial",
 				"idEditorial=" + editorial.getIdEditorial(), null);
-		regAfectados += contador;
-		return regAfectados;
+		regAfectados += contador;*/
+		return borrar("Editorial", "idEditorial=" + editorial.getIdEditorial());
+		//return regAfectados;
 	}
 
 	public Editorial consultarEditorial(int idEditorial) {
@@ -315,7 +325,7 @@ public class ControlBaseDatos {
 	}
 
 	public String eliminar(Autor autor) {
-		String regAfectados = "filas afectadas= ";
+		/*String regAfectados = "filas afectadas= ";
 		int contador = 0;
 		// if (verificarIntegridad(autor,3)) {
 		regAfectados = "0";
@@ -329,9 +339,10 @@ public class ControlBaseDatos {
 		// borrar los registros de alumno
 		contador += db.delete("autor", "idAutor='" + autor.getIdAutor() + "'",
 				null);
-		regAfectados += contador;
+		regAfectados += contador;*/
 		// }
-		return regAfectados;
+		return borrar("Autor", "idAutor='" + autor.getIdAutor() + "'");
+		//return regAfectados;
 	}
 
 	public String actualizar(Autor autor) {
@@ -409,14 +420,15 @@ public class ControlBaseDatos {
 
 	// //////////////////ELIMINAR AREA//////////////////
 	public String eliminarArea(Area area) {
-		String regAfectados = "filas afectadas= ";
+/*		String regAfectados = "filas afectadas= ";
 		int contador = 0;
 		// if (verificarIntegridad(area,3)) {
 		// contador+=db.delete("nota", "carnet='"+alumno.getCarnet()+"'", null);
 		// }
 		contador += db.delete("Area", "idArea=" + area.getIdArea(), null);
-		regAfectados += contador;
-		return regAfectados;
+		regAfectados += contador;*/
+		return borrar("Area", "idArea=" + area.getIdArea());
+		//return regAfectados;
 	}
 
 	// ///////////////////////////////////////////////
@@ -556,7 +568,7 @@ public class ControlBaseDatos {
 	}/* ACTUALIZAR DOCUMENTO */
 
 	public String eliminar(Documento documento) { /* ELIMINAR DOCUMENTO */
-		String regAfectados = "filas afectadas= ";
+/*		String regAfectados = "filas afectadas= ";
 		int contador = 0;
 		contador += db.delete("Documento",
 				"idDocumento='" + documento.getIdDocumento() + "'", null);
@@ -565,8 +577,9 @@ public class ControlBaseDatos {
 			regAfectados = "Error al Eliminar el registro. Aviso: Posiblemente no exista ese ID";
 		} else {
 			regAfectados = "Documento Eliminado Satisfactoriamente";
-		}
-		return regAfectados;
+		}*/
+		return borrar("Documento", "idDocumento='" + documento.getIdDocumento() + "'");
+		//return regAfectados;
 	}
 
 	public Cursor consulta(String tabla, String campos) {
@@ -723,6 +736,22 @@ public class ControlBaseDatos {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	}
+	
+	public String borrar(String tabla, String condicion){
+		try {
+			Cursor c = consulta(tabla,"*", condicion);
+			if(c.moveToFirst()){
+				c = db.rawQuery("DELETE FROM "+tabla+" where "+condicion,null);
+				System.out.println(c.getCount());
+				return "Registro borrado";
+			}else{
+				return "Registro no existe";
+			}			
+		} catch (Exception e) {
+			System.out.println(e);
+			return "No puede borrar este registro porque otros dependen de el";
+		}		
 	}
 
 	public String llenarBase() {
