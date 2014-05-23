@@ -159,10 +159,10 @@ public class RecibirDocumentoActivity extends Activity {
 					ca.setTimeInMillis(fechaFin.getTime().getTime()
 							- fechaInicio.getTime().getTime());
 					int dias = ca.get(Calendar.DAY_OF_YEAR);
-					if(dias!=365){
-						if(dias>3){
-							// hay penalizacion
-							//control.actualizar("Prestamo", "fechaEntrega=date('now')","numeroPrestamo=" + p.getNumPrestamo());
+					if(dias!=365){						
+						if(dias>3){				
+							// hay penalizacionPenalizacion p = control.consultarPenalizacion(1);
+							control.actualizar("Prestamo", "idPenalizacion=1","numeroPrestamo=" + p.getNumPrestamo());
 						}
 					}
 				}

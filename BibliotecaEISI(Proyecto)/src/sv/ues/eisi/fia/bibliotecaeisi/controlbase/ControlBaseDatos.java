@@ -6,6 +6,7 @@ import sv.ues.eisi.fia.bibliotecaeisi.clases.DetallePrestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Documento;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Editorial;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Pais;
+import sv.ues.eisi.fia.bibliotecaeisi.clases.Penalizacion;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Prestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.TipoDeDocumento;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Usuario;
@@ -21,7 +22,8 @@ public class ControlBaseDatos {
 	private final Context context;
 	private DatabaseHelper DBHelper;
 	private SQLiteDatabase db;
-
+	private static final String[] camposPenalizacion = new String[] { "idPenalizacion",
+		"nombrePenalizacion", "descripcionPenalizacion", "diasActivacion" };
 	private static final String[] camposPais = new String[] { "codigoPais",
 			"nombrePais" };
 	private final static String[] camposTipoDeDocumento = new String[] {
@@ -702,6 +704,22 @@ public class ControlBaseDatos {
 		}catch(Exception e){
 			System.out.println(e);
 		}		
+	}
+	
+	public Penalizacion consultarPenalizacion(int idPenalizacion) {
+		String[] id = { Integer.toString(idPenalizacion) };
+		Cursor cursor = db.query("Penalizacion", camposPenalizacion, "idPenalizacion = ?", id,
+				null, null, null);
+		if (cursor.moveToFirst()) {
+			Penalizacion p = new Penalizacion();
+			p.setIdPenalizacion(cursor.getInt(0));
+			p.setNombrePenaliza(cursor.getString(1));
+			p.setDescricionPenaliza(cursor.getString(2));
+			p.setDiasPenalizacion(cursor.getInt(0));
+			return p;
+		} else {
+			return null;
+		}
 	}
 
 	// consultas

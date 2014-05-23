@@ -1,9 +1,12 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import sv.ues.eisi.fia.bibliotecaeisi.clases.DetallePrestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Documento;
+import sv.ues.eisi.fia.bibliotecaeisi.clases.Penalizacion;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Prestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
 import sv.ues.eisi.fia.bibliotecaeisi.fragments.FragmentDialogConfirmarLibros;
@@ -58,6 +61,35 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 
 	public void agregarDocumentoDetalle(View v) {
 		boolean repetido = false;
+		control.abrir();
+		Cursor c = control.consulta("Prestamo",
+				"idPrestamo,fechaEntrega,idPenalizacion", "idUsuario='"
+						+ idUsuario + "' and idPenalizacion is not null");
+		if (c.moveToFirst()) {
+			
+			String fEntrega[];
+			Calendar ca = Calendar.getInstance();
+			Calendar fechaInicio;
+			Calendar fechaFin = new GregorianCalendar();
+			fechaFin.set(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH);
+			do {
+				Penalizacion p = control.consultarPenalizacion(c.getInt(2));
+				fEntrega = c.getString(1).split("-");
+				// fecha inicio
+				fechaInicio = new GregorianCalendar();
+				fechaInicio.set(Integer.parseInt(fEntrega[0]),
+						Integer.parseInt(fEntrega[1]),
+						Integer.parseInt(fEntrega[2]));
+				ca.setTimeInMillis(fechaFin.getTime().getTime()
+						- fechaInicio.getTime().getTime());
+				int dias = ca.get(Calendar.DAY_OF_YEAR);
+			} while (c.moveToNext());
+				
+			
+		} else {
+
+		}
+		control.cerrar();
 		if (this.d.getCantidadDisponible() != 0) {
 			if (detallesPrestamos.isEmpty()) {
 				p = new Prestamo();
@@ -85,9 +117,8 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 						"Este documento ya esta agregado a su prestamo",
 						Toast.LENGTH_SHORT).show();
 			}
-		}else{
-			Toast.makeText(this,
-					"Este documento no esta disponible",
+		} else {
+			Toast.makeText(this, "Este documento no esta disponible",
 					Toast.LENGTH_SHORT).show();
 		}
 	}
@@ -144,8 +175,8 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 		lstListado = (ListView) findViewById(R.id.ListadoBusquedaPrestamo);
 		control.abrir();
 		Cursor c = control.consulta("Documento",
-				"idDocumento,tema,idTipoDocumento,cantidadDisponible", "tema like '"
-						+ busqueda.getText().toString() + "%'");
+				"idDocumento,tema,idTipoDocumento,cantidadDisponible",
+				"tema like '" + busqueda.getText().toString() + "%'");
 		ArrayList<Documento> l = new ArrayList<Documento>();
 		if (c.moveToFirst()) {
 			resultados.setText("Resultados de busqueda");
