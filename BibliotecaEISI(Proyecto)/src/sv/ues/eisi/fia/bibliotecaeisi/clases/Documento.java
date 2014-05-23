@@ -30,7 +30,13 @@ public class Documento {
 	
 	@Override
 	public String toString() {
-		return "Tema o Titulo: "+tema;
+		String tipo;
+		if(getIdTipoDocumento()==1){
+			tipo="LIBRO";
+		}else{
+			tipo="TESIS";
+		}
+		return "Tema o Titulo: "+tema+" \nTipo de Documento: "+tipo;
 	}
 	
 	public int getIdDocumento() {

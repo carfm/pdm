@@ -83,7 +83,13 @@ public class ControlBaseDatos {
 				db.execSQL("CREATE TRIGGER fk_autor_pais BEFORE INSERT ON Autor FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT codigoPais FROM Pais WHERE codigoPais=NEW.codigoPais)IS NULL) THEN RAISE(ABORT,'Pais no existe') END;END;");
 				db.execSQL("CREATE TRIGGER fk_detallePrestamo_documento BEFORE INSERT ON DetallePrestamo FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idDocumento FROM Documento WHERE idDocumento=NEW.idDocumento)IS NULL) THEN RAISE(ABORT,'Documento no existe') END;END;");
 				db.execSQL("CREATE TRIGGER fk_prestamo_usuario BEFORE INSERT ON Prestamo FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idUsuario FROM Usuario WHERE idUsuario=NEW.idUsuario)IS NULL) THEN RAISE(ABORT,'Usuario no existe') END; END;");
-				db.execSQL("CREATE TRIGGER disminuir_disponibilidad BEFORE INSERT  ON DetallePrestamo FOR EACH ROW BEGIN UPDATE Documento SET cantidadDisponible=cantidadDisponible-1 WHERE Documento.idDocumento=new.idDocumento; END;");
+				db.execSQL("CREATE TRIGGER [disminuir_disponibilidad] BEFORE INSERT ON [DetallePrestamo]FOR EACH ROW BEGIN UPDATE Documento SET cantidadDisponible=cantidadDisponible-1 WHERE Documento.idDocumento=new.idDocumento; END");
+				// CREATE TRIGGER [aumentar_disponibilidad] AFTER UPDATE ON
+				// [DetallePrestamo] FOR EACH ROW WHEN new.estado='ENTREGADO'
+				// BEGIN UPDATE Documento SET
+				// cantidadDisponible=cantidadDisponible+1 WHERE
+				// Documento.idDocumento=new.idDocumento;END
+				db.execSQL("CREATE TRIGGER [aumentar_disponibilidad] AFTER UPDATE ON [DetallePrestamo] FOR EACH ROW WHEN new.estado='ENTREGADO' BEGIN UPDATE Documento SET cantidadDisponible=cantidadDisponible+1 WHERE Documento.idDocumento=new.idDocumento;END");
 				db.execSQL("CREATE TRIGGER fk_documento_tipoDocumento BEFORE INSERT ON Documento FOR EACH ROW BEGIN  SELECT CASE WHEN((SELECT idtipoDocumento FROM TipoDeDocumento WHERE idtipoDocumento=NEW.idtipoDocumento)IS NULL) THEN RAISE(ABORT,'Tipo de Documento no existe') END;END;");
 				db.execSQL("CREATE TRIGGER fk_detallePrestamo_Prestamo BEFORE INSERT ON DetallePrestamo FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT numeroPrestamo FROM Prestamo WHERE numeroPrestamo=NEW.numeroPrestamo)IS NULL) THEN RAISE(ABORT,'Numero de Prestamo no existe')END;END;");
 				db.execSQL("CREATE TRIGGER fk_documento_Editorial BEFORE INSERT ON Documento FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idEditorial FROM Editorial WHERE idEditorial=NEW.idEditorial)IS NULL) THEN RAISE(ABORT,'Editorial no existe') END;END;");
@@ -92,7 +98,7 @@ public class ControlBaseDatos {
 				db.execSQL("CREATE TRIGGER fk_enfocado_Area BEFORE INSERT ON enfocado FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idArea FROM Area WHERE idArea=NEW.idArea)IS NULL) THEN RAISE(ABORT,'Area no existe') END;END;");
 				db.execSQL("CREATE TRIGGER fk_tiene_Documento BEFORE INSERT ON tiene FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idDocumento FROM Documento WHERE idDocumento=NEW.idDocumento)IS NULL) THEN RAISE(ABORT,'Documento no existe')END;END;");
 				db.execSQL("CREATE TRIGGER fk_tiene_Autor BEFORE INSERT ON tiene FOR EACH ROW BEGIN SELECT CASE WHEN((SELECT idAutor FROM Autor WHERE idAutor=NEW.idAutor)IS NULL) THEN RAISE(ABORT,'Autor no existe') END; END;");
-				//db.execSQL("");
+				// db.execSQL("");
 				db.execSQL("INSERT INTO USUARIO(idUsuario,nombreUsuario, apellidoUsuario,contrasenia,activo, tipo) VALUES('FM10005','Carlos','Fuentes','q','1','alumno');");
 				db.execSQL("INSERT INTO USUARIO(idUsuario,nombreUsuario, apellidoUsuario,contrasenia,activo, tipo) VALUES('SM05083','Marvin','Segura','sm12345','1','alumno');");
 				db.execSQL("INSERT INTO USUARIO(idUsuario,nombreUsuario, apellidoUsuario,contrasenia,activo, tipo) VALUES('RR14001','Reina','Ramirez','rr12345','1','secretaria');");
@@ -121,7 +127,7 @@ public class ControlBaseDatos {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
-			//db.execSQL("drop table Prestamo");
+			// db.execSQL("drop table Prestamo");
 		}
 	}
 
@@ -453,7 +459,7 @@ public class ControlBaseDatos {
 	}
 
 	// /verificar que existe prestamo///
-	boolean verificarPrestamo(Prestamo prestamo) {
+	public boolean verificarPrestamo(Prestamo prestamo) {
 
 		String[] id2 = { Integer.toString(prestamo.getNumPrestamo()) };
 		Cursor cursor1 = db.query("Prestamo", null, "numeroPrestamo= ?", id2,
@@ -575,9 +581,9 @@ public class ControlBaseDatos {
 			c = db.rawQuery("SELECT " + campos + " FROM " + tabla + " WHERE "
 					+ condicion, null);
 		}
-		if(c.moveToFirst()){
+		if (c.moveToFirst()) {
 			System.out.println("paso");
-		}else{
+		} else {
 			System.out.println("no paso");
 		}
 		return c;
@@ -663,6 +669,7 @@ public class ControlBaseDatos {
 		detalle.put("idDetallePrestamo", detallePrestamo.getIdDetallePrestamo());
 		detalle.put("idDocumento", detallePrestamo.getIdDocumento());
 		detalle.put("numeroPrestamo", detallePrestamo.getIdPrestamo());
+		detalle.put("estado", detallePrestamo.getEstado());
 		try {
 			db.insertOrThrow("DetallePrestamo", null, detalle);
 		} catch (Exception e) {
@@ -700,6 +707,17 @@ public class ControlBaseDatos {
 				+ " SET cantidadDisponible=cantidadDisponible+'1' "
 				+ " WHERE idDocumento='1'", null);
 
+	}
+
+	public void actualizar(String tabla, String campos, String condicion) {
+
+		try {
+			Cursor c = db.rawQuery("UPDATE " + tabla + " SET " + campos
+					+ " WHERE " + condicion, null);
+			System.out.println(c.moveToFirst());
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 
 	public String llenarBase() {

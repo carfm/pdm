@@ -50,12 +50,12 @@ public final class R {
         public static final int LayoutId4=0x7f090034;
         public static final int LinearLayout1=0x7f090007;
         public static final int LinearLayout2=0x7f09002b;
-        public static final int ListadoBusquedaPrestamo=0x7f090066;
-        public static final int ListadoSecretaria=0x7f090067;
-        public static final int ListadoSubMenuSecretaria=0x7f090069;
-        public static final int ListadoUsuario=0x7f090068;
-        public static final int action_settings=0x7f09006a;
-        public static final int action_websearch=0x7f09006b;
+        public static final int ListadoBusquedaPrestamo=0x7f090067;
+        public static final int ListadoSecretaria=0x7f090068;
+        public static final int ListadoSubMenuSecretaria=0x7f09006a;
+        public static final int ListadoUsuario=0x7f090069;
+        public static final int action_settings=0x7f09006b;
+        public static final int action_websearch=0x7f09006c;
         public static final int botonLimpiar=0x7f090046;
         public static final int btnActualizar=0x7f09000b;
         public static final int btnAgregarUsuario=0x7f090042;
@@ -126,6 +126,7 @@ public final class R {
         public static final int left_drawer=0x7f090061;
         public static final int left_drawer2=0x7f090064;
         public static final int linearLayout1=0x7f090044;
+        public static final int listView1=0x7f090066;
         public static final int listViewConsultaEditorial=0x7f090053;
         public static final int listViewConsultaPrestamo=0x7f09005b;
         public static final int radioButton1=0x7f090040;

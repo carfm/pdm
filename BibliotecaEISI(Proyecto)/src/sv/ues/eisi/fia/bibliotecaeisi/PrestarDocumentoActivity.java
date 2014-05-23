@@ -76,6 +76,7 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 				DetallePrestamo det = new DetallePrestamo();
 				det.setIdDocumento(d.getIdDocumento());
 				det.setIdDetallePrestamo(null);
+				det.setEstado("NO ENTREGADO");
 				detallesPrestamos.add(det);
 				Toast.makeText(this, "Documento agregado exitosamente",
 						Toast.LENGTH_SHORT).show();
