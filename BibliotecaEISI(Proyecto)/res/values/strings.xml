@@ -199,4 +199,6 @@
     <string name="btnAgregarUsuarios">Agregar</string>
     <string name="textViewIdPrestamo">""</string>
     <string name="textview">TextView</string>
+    
+    <string name="hostGratuito">Hosting Gratuito</string>
 </resources>

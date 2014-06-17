@@ -9,8 +9,8 @@
         android:id="@+id/DetalleDocumento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title1"
         android:layout_marginTop="20dip"
+        android:text="@string/title1"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -20,8 +20,8 @@
         android:layout_marginTop="15dip"
         android:ems="10"
         android:hint="@string/promtUser" >
+
         <requestFocus />
-  
     </EditText>
 
     <EditText
@@ -41,6 +41,17 @@
         android:onClick="Verificar"
         android:text="@string/btnIniciar" />
 
-   
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="obtenerDatos"
+        android:text="@string/hostGratuito" />
+
+    <TextView
+        android:id="@+id/textSalidaHost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
 
 </LinearLayout>
