@@ -159,7 +159,7 @@ public class InicioSesionActivity extends Activity {
 		String url = urlHosting
 				+ "numeroprestamo=7&idusuario=cfuentes&idpenalizacion=NULL&idsecretaria=NULL&fechaprestamo=2014-01-01&fechaentrega=NULL&cantidadlibros=2&aprobado=1";
 		try {
-			String json = parser.obtenerRespuestaDeURL(url, this);
+			String json = parser.obtenerRespuestaDeURL(url);
 			JSONObject obj = new JSONObject(json);
 			salidaHost.setText("Resultado de servicio hosting gratuito: "
 					+ obj.getString("resultado"));

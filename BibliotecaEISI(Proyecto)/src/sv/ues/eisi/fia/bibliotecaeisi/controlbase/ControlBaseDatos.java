@@ -1,5 +1,7 @@
 package sv.ues.eisi.fia.bibliotecaeisi.controlbase;
 
+import org.json.JSONObject;
+
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Area;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Autor;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.DetallePrestamo;
@@ -10,12 +12,14 @@ import sv.ues.eisi.fia.bibliotecaeisi.clases.Penalizacion;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Prestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.TipoDeDocumento;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Usuario;
+import sv.ues.eisi.fia.bibliotecaeisi.controlwebservice.ControladorWebService;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
 
 public class ControlBaseDatos {
 
@@ -43,6 +47,8 @@ public class ControlBaseDatos {
 			"idEditorial", "nombreEditorial" };
 	private final static String[] camposUsuario = new String[] { "idUsuario",
 			"nombreUsuario", "apellidoUsuario", "contrasenia", "activo", "tipo" };
+	private static String urlHosting = "http://pdm115.freeiz.com/";
+	private static String urlHostingInsertarPrestamo = "insertar_prestamo.php?";
 
 	public ControlBaseDatos(Context ctx) {
 		this.context = ctx;
@@ -701,6 +707,7 @@ public class ControlBaseDatos {
 			Cursor c = db.rawQuery("INSERT INTO Prestamo VALUES(NULL,'"+prestamo.getIdUsuario()
 					+"',NULL,NULL,date('now'),NULL,"+prestamo.getCantidadLibros()+","+prestamo.getAprobado()+")",null);
 			System.out.println(c.moveToFirst());
+			
 		}catch(Exception e){
 			System.out.println(e);
 		}		
@@ -776,5 +783,19 @@ public class ControlBaseDatos {
 
 		String regInsertados = "Registro Insertado Nº= ";
 		return regInsertados;
+	}
+	
+	public String insertarWS(String parametros) {
+		ControladorWebService parser = new ControladorWebService();
+		String url = urlHosting +urlHostingInsertarPrestamo+parametros;
+		try {
+			String json = parser.obtenerRespuestaDeURL(url);
+			JSONObject obj = new JSONObject(json);
+			return obj.getString("resultado");
+			//salidaHost.setText("Resultado de servicio hosting gratuito: "obj.getString("resultado"));
+		} catch (Exception e) {
+			return "error";
+			//salidaHost.setText(ControladorWebService.informacionError);
+		}
 	}
 }

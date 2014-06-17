@@ -153,6 +153,18 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 				control.insertar(p);
 				control.cerrar();
 				control.abrir();
+				String parametros = "numeroprestamo=NULL" +
+						"&idusuario="+p.getIdUsuario() +
+						"&idpenalizacion=NULL" +
+						"&idsecretaria=NULL" +
+						"&fechaprestamo="+p.getFechaPrestamo() +
+						"&fechaentrega=NULL" +
+						"&cantidadlibros="+p.getCantidadLibros() +
+						"&aprobado=0";
+				Toast.makeText(
+						this,
+						control.insertarWS(parametros), Toast.LENGTH_SHORT)
+						.show();
 				Cursor c = control.consulta("Prestamo",
 						"MAX(numeroPrestamo) as num", "");
 				int num = Integer.parseInt(c.getString(0));
@@ -167,12 +179,12 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 				idPrestamo.setText("Id de prestamo: " + p.getNumPrestamo());
 				detallesPrestamos.clear();
 
-				Toast.makeText(
+				/*Toast.makeText(
 						this,
 						"Prestamo generado exitosamente.\nVaya donde la "
 								+ "secretaria con el id de prestamo "
 								+ "para su aprobacion", Toast.LENGTH_SHORT)
-						.show();
+						.show();*/
 			} else {
 				Toast.makeText(this, "No ha seleccionado ningun libro",
 						Toast.LENGTH_SHORT).show();
