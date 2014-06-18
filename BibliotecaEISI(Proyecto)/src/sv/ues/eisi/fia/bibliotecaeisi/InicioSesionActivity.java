@@ -136,7 +136,7 @@ public class InicioSesionActivity extends Activity {
 					editTextPass.setText("");
 				} else {
 					Toast.makeText(this,
-							"La contraseña no coincide.\nVuelva a ingresarla",
+							"La contraseï¿½a no coincide.\nVuelva a ingresarla",
 							Toast.LENGTH_LONG).show();
 				}
 			}
@@ -157,8 +157,7 @@ public class InicioSesionActivity extends Activity {
 	//hola
 	public void obtenerDatos(View v) {
 		ControladorWebService parser = new ControladorWebService();
-		String url = urlHosting
-				+ "iddocumento=34&ideditorial=1&idtipodocumento=1&tema=prueba2&descripcion=libronuevo&anio=2014&numeropaginas=300&cantidaddisponible=7&edicion=6";
+		String url = urlHosting;
 		try {
 			String json = parser.obtenerRespuestaDeURL(url);
 			JSONObject obj = new JSONObject(json);
