@@ -85,6 +85,7 @@ public class ActualizarDocumentoActivity extends Activity {
 		BDhelper.abrir();
 		String estado = BDhelper.actualizar(documento);
 		BDhelper.cerrar();
+		
 		Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
 	}
 	public void LimpiarAct(View v){

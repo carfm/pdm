@@ -157,7 +157,7 @@ public class InicioSesionActivity extends Activity {
 	public void obtenerDatos(View v) {
 		ControladorWebService parser = new ControladorWebService();
 		String url = urlHosting
-				+ "?iddocumento=34&ideditorial=1&idtipodocumento=1&tema=prueba2&descripcion=libronuevo&anio=2014&numeropaginas=300&cantidaddisponible=7&edicion=6";
+				+ "iddocumento=1&ideditorial=1&idtipodocumento=1&tema=prueba2&descripcion=libronuevo&anio=2014&numeropaginas=300&cantidaddisponible=7&edicion=6";
 		try {
 			String json = parser.obtenerRespuestaDeURL(url);
 			JSONObject obj = new JSONObject(json);
