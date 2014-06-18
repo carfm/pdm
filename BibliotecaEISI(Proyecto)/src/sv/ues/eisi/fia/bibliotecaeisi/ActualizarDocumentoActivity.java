@@ -85,6 +85,16 @@ public class ActualizarDocumentoActivity extends Activity {
 		BDhelper.abrir();
 		String estado = BDhelper.actualizar(documento);
 		BDhelper.cerrar();
+		BDhelper.insertarWS("iddocumento="+documento.getIdDocumento()+
+			             	"&ideditorial="+documento.getIdEditorial()+
+		                    "&tipodocumento="+documento.getIdTipoDocumento()+
+		                    "&tema="+documento.getTema()+
+		                    "&descripcion="+documento.getDescripcion()+
+		                    "&anio="+documento.getAnio()+
+		                    "&numeropaginas="+documento.getNumeroPagina()+
+	                         "&cantidaddisponible="+documento.getCantidadDisponible()+
+	                         "&edicion="+documento.getEdicion());
+		
 		Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
 	}
 	public void LimpiarAct(View v){
