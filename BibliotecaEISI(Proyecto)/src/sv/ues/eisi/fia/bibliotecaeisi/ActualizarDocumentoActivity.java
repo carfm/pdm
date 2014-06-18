@@ -13,32 +13,32 @@ import android.widget.Toast;
 public class ActualizarDocumentoActivity extends Activity {
 
 	ControlBaseDatos BDhelper;
-    EditText edIdDocumento;
-    EditText edIdEditorial;
-    EditText edTipoDocumento;
-    EditText edTema;
-    EditText edDescripcion;
-    EditText edAnio;
-    EditText edPaginas;
-    EditText edCantidad;
-    EditText edEdicion;
-    Button btnActualizar;
-    
+	EditText edIdDocumento;
+	EditText edIdEditorial;
+	EditText edTipoDocumento;
+	EditText edTema;
+	EditText edDescripcion;
+	EditText edAnio;
+	EditText edPaginas;
+	EditText edCantidad;
+	EditText edEdicion;
+	Button btnActualizar;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_actualizar_documento);
 		BDhelper = new ControlBaseDatos(this);
-		edIdDocumento = (EditText)findViewById(R.id.edIdDocumento);
-	    edIdEditorial = (EditText)findViewById(R.id.edIdEditorial);
-	    edTipoDocumento = (EditText)findViewById(R.id.edTipoDocumento);
-	    edTema = (EditText)findViewById(R.id.edTema);
-	    edDescripcion = (EditText)findViewById(R.id.edDescripcion);
-	    edAnio = (EditText)findViewById(R.id.edAnio);
-	    edPaginas = (EditText)findViewById(R.id.edNumPag);
-	    edCantidad = (EditText)findViewById(R.id.edCantidad);
-	    edEdicion = (EditText)findViewById(R.id.edEdicion);
-	    btnActualizar = (Button)findViewById(R.id.btnActualizar);
+		edIdDocumento = (EditText) findViewById(R.id.edIdDocumento);
+		edIdEditorial = (EditText) findViewById(R.id.edIdEditorial);
+		edTipoDocumento = (EditText) findViewById(R.id.edTipoDocumento);
+		edTema = (EditText) findViewById(R.id.edTema);
+		edDescripcion = (EditText) findViewById(R.id.edDescripcion);
+		edAnio = (EditText) findViewById(R.id.edAnio);
+		edPaginas = (EditText) findViewById(R.id.edNumPag);
+		edCantidad = (EditText) findViewById(R.id.edCantidad);
+		edEdicion = (EditText) findViewById(R.id.edEdicion);
+		btnActualizar = (Button) findViewById(R.id.btnActualizar);
 	}
 
 	@Override
@@ -47,48 +47,66 @@ public class ActualizarDocumentoActivity extends Activity {
 		getMenuInflater().inflate(R.menu.actualizar_documento, menu);
 		return true;
 	}
-	
-	public void ExtraerInfo(View v){
+
+	public void ExtraerInfo(View v) {
 		BDhelper.abrir();
-		Documento documento = BDhelper.consultarDocumento(edIdDocumento.getText().toString());
+		Documento documento = BDhelper.consultarDocumento(edIdDocumento
+				.getText().toString());
 		BDhelper.cerrar();
-		if(documento == null){
-		Toast.makeText(this, "Documento con Id: " + edIdDocumento.getText().toString() + " no encontrado", Toast.LENGTH_LONG).show();
-		btnActualizar.setEnabled(false);
-		}
-		else{
+		if (documento == null) {
+			Toast.makeText(
+					this,
+					"Documento con Id: " + edIdDocumento.getText().toString()
+							+ " no encontrado", Toast.LENGTH_LONG).show();
+			btnActualizar.setEnabled(false);
+		} else {
 			edIdEditorial.setText(String.valueOf(documento.getIdEditorial()));
-			edTipoDocumento.setText(String.valueOf(documento.getIdTipoDocumento()));
+			edTipoDocumento.setText(String.valueOf(documento
+					.getIdTipoDocumento()));
 			edTema.setText(documento.getTema());
 			edDescripcion.setText(documento.getDescripcion());
 			edAnio.setText(documento.getAnio());
 			edPaginas.setText(documento.getNumeroPagina());
-			edCantidad.setText(String.valueOf(documento.getCantidadDisponible()));
+			edCantidad
+					.setText(String.valueOf(documento.getCantidadDisponible()));
 			edEdicion.setText(String.valueOf(documento.getEdicion()));
 			btnActualizar.setEnabled(true);
 			edIdDocumento.setEnabled(false);
 		}
 	}
 
-	public void ActualizaDocumento(View v){
+	public void ActualizaDocumento(View v) {
 		Documento documento = new Documento();
-		documento.setIdDocumento(Integer.valueOf(edIdDocumento.getText().toString()));
-		documento.setIdEditorial(Integer.valueOf(edIdEditorial.getText().toString()));
-		documento.setIdTipoDocumento(Integer.valueOf(edTipoDocumento.getText().toString()));
+		documento.setIdDocumento(Integer.valueOf(edIdDocumento.getText()
+				.toString()));
+		documento.setIdEditorial(Integer.valueOf(edIdEditorial.getText()
+				.toString()));
+		documento.setIdTipoDocumento(Integer.valueOf(edTipoDocumento.getText()
+				.toString()));
 		documento.setTema(edTema.getText().toString());
 		documento.setDescripcion(edDescripcion.getText().toString());
 		documento.setAnio(edAnio.getText().toString());
 		documento.setNumeroPagina(edPaginas.getText().toString());
-		documento.setCantidadDisponible(Integer.valueOf(edCantidad.getText().toString()));
+		documento.setCantidadDisponible(Integer.valueOf(edCantidad.getText()
+				.toString()));
 		documento.setEdicion(Integer.valueOf(edEdicion.getText().toString()));
-		
+
 		BDhelper.abrir();
 		String estado = BDhelper.actualizar(documento);
 		BDhelper.cerrar();
-		
+		BDhelper.insertarWS("iddocumento=" + documento.getIdDocumento()
+				+ "&ideditorial=" + documento.getIdEditorial()
+				+ "&idtipodocumento=" + documento.getIdTipoDocumento()
+				+ "&tema=" + documento.getTema() + "&descripcion="
+				+ documento.getDescripcion() + "&anio=" + documento.getAnio()
+				+ "&numeropaginas=" + documento.getNumeroPagina()
+				+ "&cantidaddisponible=" + documento.getCantidadDisponible()
+				+ "&edicion=" + documento.getEdicion());
+
 		Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
 	}
-	public void LimpiarAct(View v){
+
+	public void LimpiarAct(View v) {
 		edIdDocumento.setText("");
 		edIdEditorial.setText("");
 		edTipoDocumento.setText("");
