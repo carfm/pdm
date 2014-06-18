@@ -19,7 +19,7 @@ import android.widget.Toast;
 @SuppressLint("NewApi")
 public class InicioSesionActivity extends Activity {
 
-	private static String urlHosting = "http://pdm115.freeiz.com/insertar_prestamo.php?";
+	private static String urlHosting = "http://pdm115.freeiz.com/actualizar_doc.php?";
 	String edtContrasenia;
 	EditText editTextUser;
 	EditText editTextPass;
@@ -157,7 +157,7 @@ public class InicioSesionActivity extends Activity {
 	public void obtenerDatos(View v) {
 		ControladorWebService parser = new ControladorWebService();
 		String url = urlHosting
-				+ "numeroprestamo=7&idusuario=cfuentes&idpenalizacion=NULL&idsecretaria=NULL&fechaprestamo=2014-01-01&fechaentrega=NULL&cantidadlibros=2&aprobado=1";
+				+ "?iddocumento=34&ideditorial=1&idtipodocumento=1&tema=prueba2&descripcion=libronuevo&anio=2014&numeropaginas=300&cantidaddisponible=7&edicion=6";
 		try {
 			String json = parser.obtenerRespuestaDeURL(url);
 			JSONObject obj = new JSONObject(json);
