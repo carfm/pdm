@@ -154,6 +154,7 @@ public class InicioSesionActivity extends Activity {
 		finish(); // termina la actividad
 	}
 
+	//hola
 	public void obtenerDatos(View v) {
 		ControladorWebService parser = new ControladorWebService();
 		String url = urlHosting
