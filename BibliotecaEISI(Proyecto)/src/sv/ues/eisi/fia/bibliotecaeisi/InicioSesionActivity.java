@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
 import sv.ues.eisi.fia.bibliotecaeisi.controlwebservice.ControladorWebService;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Usuario;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.annotation.SuppressLint;
@@ -157,7 +158,10 @@ public class InicioSesionActivity extends Activity {
 	// jolaaa
 
 	public void obtenerDatos(View v) {
-		ControladorWebService parser = new ControladorWebService();
+		MediaPlayer Media;
+		//Media=MediaPlayer.create(getApplicationContext(),);
+		
+		/*ControladorWebService parser = new ControladorWebService();
 		String url = urlHosting
 				+ "iddocumento=1&ideditorial=1&idtipodocumento=1&tema=prueba2&descripcion=libronuevo&anio=2014&numeropaginas=300&cantidaddisponible=7&edicion=6";
 		try {
@@ -167,6 +171,6 @@ public class InicioSesionActivity extends Activity {
 					+ obj.getString("resultado"));
 		} catch (Exception e) {
 			salidaHost.setText(ControladorWebService.informacionError);
-		}
+		}*/
 	}
 }
