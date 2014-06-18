@@ -153,6 +153,8 @@ public class InicioSesionActivity extends Activity {
 		System.out.println("Salio");
 		finish(); // termina la actividad
 	}
+	
+	// jolaaa
 
 	public void obtenerDatos(View v) {
 		ControladorWebService parser = new ControladorWebService();
