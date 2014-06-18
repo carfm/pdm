@@ -87,7 +87,7 @@ public class ActualizarDocumentoActivity extends Activity {
 		BDhelper.cerrar();
 		BDhelper.insertarWS("iddocumento="+documento.getIdDocumento()+
 			             	"&ideditorial="+documento.getIdEditorial()+
-		                    "&tipodocumento="+documento.getIdTipoDocumento()+
+		                    "&idtipodocumento="+documento.getIdTipoDocumento()+
 		                    "&tema="+documento.getTema()+
 		                    "&descripcion="+documento.getDescripcion()+
 		                    "&anio="+documento.getAnio()+
