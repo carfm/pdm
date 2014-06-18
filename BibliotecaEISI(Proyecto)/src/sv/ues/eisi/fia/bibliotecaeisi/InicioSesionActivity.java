@@ -159,7 +159,8 @@ public class InicioSesionActivity extends Activity {
 
 	public void obtenerDatos(View v) {
 		MediaPlayer Media;
-		//Media=MediaPlayer.create(getApplicationContext(),);
+		
+		Media=MediaPlayer.create(getApplicationContext(),);
 		
 		/*ControladorWebService parser = new ControladorWebService();
 		String url = urlHosting
