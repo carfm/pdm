@@ -1,5 +1,7 @@
 package sv.ues.eisi.fia.bibliotecaeisi.controlbase;
 
+import java.net.URLEncoder;
+
 import org.json.JSONObject;
 
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Area;
@@ -48,6 +50,7 @@ public class ControlBaseDatos {
 			"nombreUsuario", "apellidoUsuario", "contrasenia", "activo", "tipo" };
 	private static String urlHosting = "http://pdm115.freeiz.com/";
 	private static String urlHostingInsertarPrestamo = "insertar_prestamo.php?";
+	private static String urlHostingActualiza = "actualizar_doc.php?";
 
 	public ControlBaseDatos(Context ctx) {
 		this.context = ctx;
@@ -789,6 +792,20 @@ public class ControlBaseDatos {
 		String url = urlHosting +urlHostingInsertarPrestamo+parametros;
 		try {
 			String json = parser.obtenerRespuestaDeURL(url);
+			JSONObject obj = new JSONObject(json);
+			return obj.getString("resultado");
+			//salidaHost.setText("Resultado de servicio hosting gratuito: "obj.getString("resultado"));
+		} catch (Exception e) {
+			return "error";
+			//salidaHost.setText(ControladorWebService.informacionError);
+		}
+	}
+	public String WSactualiza(String parametros) {
+		ControladorWebService parser = new ControladorWebService();
+		//String url = urlHosting +urlHostingActualiza+URLEncoder.encode(parametros);
+	    //System.out.println(parametros);
+		try {
+			String json = parser.obtenerRespuestaDeURL(parametros);
 			JSONObject obj = new JSONObject(json);
 			return obj.getString("resultado");
 			//salidaHost.setText("Resultado de servicio hosting gratuito: "obj.getString("resultado"));
