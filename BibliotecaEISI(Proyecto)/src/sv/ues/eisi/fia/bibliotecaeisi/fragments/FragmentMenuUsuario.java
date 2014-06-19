@@ -22,9 +22,11 @@ public class FragmentMenuUsuario extends Fragment {
 	public static final String IDUSER = "id_user";
 	final String matriz[][] =new String[][] {
 			{"PrestarDocumentoActivity","HistorialPrestamoActivity"},
-			{"HistorialEntregaActivity",""}};
+			{"HistorialEntregaActivity",""},
+			{"TomarFotoDocumentoActivity",""}};
 	private String[] datos;
 	private String[] datos1;
+	private String[] datos2;
 	private ListView lstListado;
 	private TextView txtVnombre;
 	Activity context;
@@ -43,6 +45,8 @@ public class FragmentMenuUsuario extends Fragment {
 					R.array.opciones_prestamos_usuario);
 			datos1= getResources().getStringArray(
 					R.array.opciones_entregas_usuario);
+			datos2= getResources().getStringArray(
+					R.array.opciones_otras_usuario);
 			return inflater.inflate(R.layout.fragment_menu_usuario,
 					container, false);
 		} else {
@@ -64,6 +68,9 @@ public class FragmentMenuUsuario extends Fragment {
 				break;
 			case 2:
 				datos = this.datos1;
+				break;
+			case 3:
+				datos = this.datos2;
 				break;
 			}
 			ArrayAdapter<String> adaptador = new ArrayAdapter<String>(

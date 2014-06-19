@@ -1,11 +1,7 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
-import org.json.JSONObject;
-
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
-import sv.ues.eisi.fia.bibliotecaeisi.controlwebservice.ControladorWebService;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Usuario;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.annotation.SuppressLint;
@@ -20,7 +16,6 @@ import android.widget.Toast;
 @SuppressLint("NewApi")
 public class InicioSesionActivity extends Activity {
 
-	private static String urlHosting = "http://pdm115.freeiz.com/actualizar_doc.php?";
 	String edtContrasenia;
 	EditText editTextUser;
 	EditText editTextPass;
@@ -158,10 +153,14 @@ public class InicioSesionActivity extends Activity {
 	// jolaaa
 
 	public void obtenerDatos(View v) {
-		MediaPlayer Media;
+		try {
+			Intent inte = new Intent(this,TomarFotoDocumentoActivity.class);
+			this.startActivity(inte);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		Media=MediaPlayer.create(getApplicationContext(),);
-		
+		//LibreriasEspeciales.reproducirAudio(getApplicationContext(),1);
 		/*ControladorWebService parser = new ControladorWebService();
 		String url = urlHosting
 				+ "iddocumento=1&ideditorial=1&idtipodocumento=1&tema=prueba2&descripcion=libronuevo&anio=2014&numeropaginas=300&cantidaddisponible=7&edicion=6";
