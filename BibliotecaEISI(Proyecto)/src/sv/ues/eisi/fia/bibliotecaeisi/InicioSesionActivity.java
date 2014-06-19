@@ -153,12 +153,13 @@ public class InicioSesionActivity extends Activity {
 	// jolaaa
 
 	public void obtenerDatos(View v) {
-		/*
-		 * try { Intent inte = new
-		 * Intent(this,SpeechBusquedaDocumentoActivity.class);
-		 * this.startActivity(inte); } catch (Exception e) {
-		 * e.printStackTrace(); }
-		 */
+
+		try {
+			Intent inte = new Intent(this, ImprimirHojaPrestamoActivity.class);
+			this.startActivity(inte);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		// LibreriasEspeciales.reproducirAudio(getApplicationContext(),1);
 		/*

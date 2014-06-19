@@ -66,7 +66,7 @@ public final class R {
         public static final int btnLimpiar=0x7f0a004c;
         public static final int btnTomaFoto=0x7f0a006a;
         public static final int butActualizarEditorial=0x7f0a0027;
-        public static final int button1=0x7f0a0060;
+        public static final int button1=0x7f0a005e;
         public static final int button2=0x7f0a0028;
         public static final int button3=0x7f0a000c;
         public static final int content_frame=0x7f0a0063;
@@ -109,8 +109,8 @@ public final class R {
         public static final int editNumPrestamo=0x7f0a0044;
         public static final int editNumero=0x7f0a0033;
         public static final int editTema=0x7f0a0030;
-        public static final int editText1=0x7f0a005e;
-        public static final int editText2=0x7f0a005f;
+        public static final int editText1=0x7f0a005f;
+        public static final int editText2=0x7f0a0060;
         public static final int editTextIdEditorial=0x7f0a0026;
         public static final int editTextNombreEditorial=0x7f0a0024;
         public static final int editTipoDocumento=0x7f0a002f;
@@ -181,19 +181,20 @@ public final class R {
         public static final int activity_eliminar_pais=0x7f030016;
         public static final int activity_historial_entrega=0x7f030017;
         public static final int activity_historial_prestamo=0x7f030018;
-        public static final int activity_inicio_sesion=0x7f030019;
-        public static final int activity_menu_secretaria=0x7f03001a;
-        public static final int activity_menu_usuario=0x7f03001b;
-        public static final int activity_prestar_documento=0x7f03001c;
-        public static final int activity_recibir_documento=0x7f03001d;
-        public static final int activity_tomar_foto=0x7f03001e;
-        public static final int drawer_list_item=0x7f03001f;
-        public static final int fragment_busqueda_prestamo=0x7f030020;
-        public static final int fragment_detalle_documento=0x7f030021;
-        public static final int fragment_inicio=0x7f030022;
-        public static final int fragment_menu_secretaria=0x7f030023;
-        public static final int fragment_menu_usuario=0x7f030024;
-        public static final int fragment_submenu_secretaria=0x7f030025;
+        public static final int activity_imprimir_hoja_prestamo=0x7f030019;
+        public static final int activity_inicio_sesion=0x7f03001a;
+        public static final int activity_menu_secretaria=0x7f03001b;
+        public static final int activity_menu_usuario=0x7f03001c;
+        public static final int activity_prestar_documento=0x7f03001d;
+        public static final int activity_recibir_documento=0x7f03001e;
+        public static final int activity_tomar_foto=0x7f03001f;
+        public static final int drawer_list_item=0x7f030020;
+        public static final int fragment_busqueda_prestamo=0x7f030021;
+        public static final int fragment_detalle_documento=0x7f030022;
+        public static final int fragment_inicio=0x7f030023;
+        public static final int fragment_menu_secretaria=0x7f030024;
+        public static final int fragment_menu_usuario=0x7f030025;
+        public static final int fragment_submenu_secretaria=0x7f030026;
     }
     public static final class menu {
         public static final int actualizar_area=0x7f090000;
@@ -221,15 +222,16 @@ public final class R {
         public static final int entregar_documento=0x7f090016;
         public static final int historial_entrega=0x7f090017;
         public static final int historial_prestamo=0x7f090018;
-        public static final int inicio_sesion=0x7f090019;
-        public static final int insertar_area=0x7f09001a;
-        public static final int main=0x7f09001b;
-        public static final int menu_biblioteca=0x7f09001c;
-        public static final int menu_secretaria=0x7f09001d;
-        public static final int menu_usuario=0x7f09001e;
-        public static final int prestar_documento=0x7f09001f;
-        public static final int speech_busqueda_documento=0x7f090020;
-        public static final int tomar_foto=0x7f090021;
+        public static final int imprimir_hoja_prestamo=0x7f090019;
+        public static final int inicio_sesion=0x7f09001a;
+        public static final int insertar_area=0x7f09001b;
+        public static final int main=0x7f09001c;
+        public static final int menu_biblioteca=0x7f09001d;
+        public static final int menu_secretaria=0x7f09001e;
+        public static final int menu_usuario=0x7f09001f;
+        public static final int prestar_documento=0x7f090020;
+        public static final int speech_busqueda_documento=0x7f090021;
+        public static final int tomar_foto=0x7f090022;
     }
     public static final class raw {
         public static final int arch1=0x7f040000;
@@ -299,6 +301,7 @@ public final class R {
         public static final int nombreautor=0x7f070056;
         public static final int nombrepais=0x7f070067;
         public static final int opciones=0x7f070059;
+        public static final int print_string=0x7f070099;
         public static final int promtPass=0x7f07003a;
         public static final int promtUser=0x7f070039;
         public static final int saludoAlum=0x7f07003d;
@@ -359,6 +362,7 @@ public final class R {
         public static final int title_activity_entregar_documento=0x7f07002a;
         public static final int title_activity_historial_entrega=0x7f07002b;
         public static final int title_activity_historial_prestamo=0x7f070029;
+        public static final int title_activity_imprimir_hoja_prestamo=0x7f070098;
         public static final int title_activity_menu_biblioteca=0x7f070010;
         public static final int title_activity_menu_secretaria=0x7f07000f;
         public static final int title_activity_menu_usuario=0x7f07002c;

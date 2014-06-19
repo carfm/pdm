@@ -150,6 +150,10 @@
             android:name="sv.ues.eisi.fia.bibliotecaeisi.SpeechBusquedaDocumentoActivity"
             android:label="@string/title_activity_speech_busqueda_documento" >
         </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ImprimirHojaPrestamoActivity"
+            android:label="@string/title_activity_imprimir_hoja_prestamo" >
+        </activity>
     </application>
 
 </manifest>

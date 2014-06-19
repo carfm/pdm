@@ -207,5 +207,7 @@
     <string name="title_activity_speech_busqueda_documento">SpeechBusquedaDocumentoActivity</string>
     <string name="btnTalk">Hable ahora</string>
     <string name="buscarSpeech">Busqueda por voz</string>
+    <string name="title_activity_imprimir_hoja_prestamo">ImprimirHojaPrestamoActivity</string>
+    <string name="print_string">Imprimir</string>
 
 </resources>
