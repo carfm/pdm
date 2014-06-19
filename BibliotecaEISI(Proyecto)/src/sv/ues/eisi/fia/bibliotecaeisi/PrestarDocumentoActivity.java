@@ -3,12 +3,12 @@ package sv.ues.eisi.fia.bibliotecaeisi;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import sv.ues.eisi.fia.bibliotecaeisi.clases.DetallePrestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Documento;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Penalizacion;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Prestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
+import sv.ues.eisi.fia.bibliotecaeisi.especiales.LibreriasEspeciales;
 import sv.ues.eisi.fia.bibliotecaeisi.fragments.FragmentDialogConfirmarLibros;
 import sv.ues.eisi.fia.bibliotecaeisi.fragments.FragmentPrestamoDocumento;
 import android.content.Intent;
@@ -184,7 +184,7 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 				}
 				idPrestamo.setText("Id de prestamo: " + p.getNumPrestamo());
 				detallesPrestamos.clear();
-
+				LibreriasEspeciales.reproducirAudio(getApplicationContext(),1);
 				/*Toast.makeText(
 						this,
 						"Prestamo generado exitosamente.\nVaya donde la "

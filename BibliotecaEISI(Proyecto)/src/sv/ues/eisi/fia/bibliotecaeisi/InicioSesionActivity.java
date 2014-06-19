@@ -30,8 +30,8 @@ public class InicioSesionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inicio_sesion);
-		StrictMode.ThreadPolicy policy = new
-		StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 		BDhelper = new ControlBaseDatos(this);
 		editTextUser = (EditText) findViewById(R.id.editText1);
@@ -149,28 +149,27 @@ public class InicioSesionActivity extends Activity {
 		System.out.println("Salio");
 		finish(); // termina la actividad
 	}
-	
+
 	// jolaaa
 
 	public void obtenerDatos(View v) {
-		try {
-			Intent inte = new Intent(this,SpeechBusquedaDocumentoActivity.class);
-			this.startActivity(inte);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		//LibreriasEspeciales.reproducirAudio(getApplicationContext(),1);
-		/*ControladorWebService parser = new ControladorWebService();
-		String url = urlHosting
-				+ "iddocumento=1&ideditorial=1&idtipodocumento=1&tema=prueba2&descripcion=libronuevo&anio=2014&numeropaginas=300&cantidaddisponible=7&edicion=6";
-		try {
-			String json = parser.obtenerRespuestaDeURL(url);
-			JSONObject obj = new JSONObject(json);
-			salidaHost.setText("Resultado de servicio hosting gratuito: "
-					+ obj.getString("resultado"));
-		} catch (Exception e) {
-			salidaHost.setText(ControladorWebService.informacionError);
-		}*/
+		/*
+		 * try { Intent inte = new
+		 * Intent(this,SpeechBusquedaDocumentoActivity.class);
+		 * this.startActivity(inte); } catch (Exception e) {
+		 * e.printStackTrace(); }
+		 */
+
+		// LibreriasEspeciales.reproducirAudio(getApplicationContext(),1);
+		/*
+		 * ControladorWebService parser = new ControladorWebService(); String
+		 * url = urlHosting +
+		 * "iddocumento=1&ideditorial=1&idtipodocumento=1&tema=prueba2&descripcion=libronuevo&anio=2014&numeropaginas=300&cantidaddisponible=7&edicion=6"
+		 * ; try { String json = parser.obtenerRespuestaDeURL(url); JSONObject
+		 * obj = new JSONObject(json);
+		 * salidaHost.setText("Resultado de servicio hosting gratuito: " +
+		 * obj.getString("resultado")); } catch (Exception e) {
+		 * salidaHost.setText(ControladorWebService.informacionError); }
+		 */
 	}
 }
