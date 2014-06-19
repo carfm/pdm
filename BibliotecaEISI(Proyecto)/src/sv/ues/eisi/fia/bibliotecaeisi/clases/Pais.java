@@ -2,32 +2,32 @@ package sv.ues.eisi.fia.bibliotecaeisi.clases;
 
 public class Pais {
 
-	private String codigoPais;
-	private String nombrePais;
+	private String codigopais;
+	private String nombrepais;
 	
 	
 	public Pais() {
 		// TODO Auto-generated constructor stub
 	}
 	public Pais(String codigoPais, String nombrePais) {
-		this.codigoPais = codigoPais;
-		this.nombrePais = nombrePais;
+		this.codigopais = codigoPais;
+		this.nombrepais = nombrePais;
 	}
 	@Override
 	public String toString() {
-		return nombrePais;
+		return nombrepais;
 	}
 	public String getCodigoPais() {
-		return codigoPais;
+		return codigopais;
 	}
 	public void setCodigoPais(String codigoPais) {
-		this.codigoPais = codigoPais;
+		this.codigopais = codigoPais;
 	}
 	public String getNombrePais() {
-		return nombrePais;
+		return nombrepais;
 	}
 	public void setNombrePais(String nombrePais) {
-		this.nombrePais = nombrePais;
+		this.nombrepais = nombrePais;
 	}
 	
 	

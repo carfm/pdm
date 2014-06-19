@@ -1,7 +1,14 @@
 package sv.ues.eisi.fia.bibliotecaeisi.controlwebservice;
 
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import com.google.gson.Gson;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -90,4 +97,47 @@ public class ControladorWebService {
 	}
 	
 
+	// HTTP  request
+	//POST(INSERTAR),PUT(ACTUALIZAR,DELETE(BORRAR)
+    public void sendHttpRequest(Object obj,String clase,String metodo) throws Exception {
+    	  try {
+            String url = "http://192.168.1.9:8080/WSprestamoLibrosEISI/webresources/"+clase+"/";
+            URL ob = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) ob.openConnection();
+
+            //add reqUest header
+            con.setRequestMethod(metodo);
+            con.setRequestProperty("Content-Type", "application/json");
+            //con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+            Gson gson = new Gson();
+            String urlParameters = gson.toJson(obj);
+            		//"{\"carnet\":\"NN00006\",\"nombre\":\"carlos\",\"apellido\":\"perez\",\"sexo\":\"M\",\"matganadas\":0}";
+
+            // Send post request
+            con.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes(urlParameters);
+            wr.flush();
+            wr.close();
+            int responseCode = con.getResponseCode();
+            System.out.println("Response Code : " + responseCode);
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuilder response = new StringBuilder();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            //print result
+            System.out.println(response.toString());
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
 }

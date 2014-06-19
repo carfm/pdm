@@ -2,14 +2,14 @@ package sv.ues.eisi.fia.bibliotecaeisi.clases;
 
 public class Documento {
 	
-	private int idDocumento;
-	private int idEditorial;
-	private int idTipoDocumento;
+	private int iddocumento;
+	private int ideditorial;
+	private int idtipodocumento;
 	private String tema;
 	private String descripcion;
 	private String anio;
-	private String numeroPagina;
-	private int cantidadDisponible;
+	private String numeropagina;
+	private int cantidaddisponible;
 	private int edicion;
 	
 	public Documento(){
@@ -17,14 +17,14 @@ public class Documento {
 	}
 	
 	public Documento(int idDocumento, int idEditorial, int idTipoDocumento,	String tema, String descripcion, String anio, String numeroPagina, int cantidadDisponible, int edicion) {
-		this.idDocumento = idDocumento;
-		this.idEditorial = idEditorial;
-		this.idTipoDocumento = idTipoDocumento;
+		this.iddocumento = idDocumento;
+		this.ideditorial = idEditorial;
+		this.idtipodocumento = idTipoDocumento;
 		this.tema = tema;
 		this.descripcion = descripcion;
 		this.anio = anio;
-		this.numeroPagina = numeroPagina;
-		this.cantidadDisponible = cantidadDisponible;
+		this.numeropagina = numeroPagina;
+		this.cantidaddisponible = cantidadDisponible;
 		this.edicion = edicion;
 	}
 	
@@ -40,22 +40,22 @@ public class Documento {
 	}
 	
 	public int getIdDocumento() {
-		return idDocumento;
+		return iddocumento;
 	}
 	public void setIdDocumento(int idDocumento) {
-		this.idDocumento = idDocumento;
+		this.iddocumento = idDocumento;
 	}
 	public int getIdEditorial() {
-		return idEditorial;
+		return ideditorial;
 	}
 	public void setIdEditorial(int idEditorial) {
-		this.idEditorial = idEditorial;
+		this.ideditorial = idEditorial;
 	}
 	public int getIdTipoDocumento() {
-		return idTipoDocumento;
+		return idtipodocumento;
 	}
 	public void setIdTipoDocumento(int idTipoDocumento) {
-		this.idTipoDocumento = idTipoDocumento;
+		this.idtipodocumento = idTipoDocumento;
 	}
 	public String getTema() {
 		return tema;
@@ -76,16 +76,16 @@ public class Documento {
 		this.anio = anio;
 	}
 	public String getNumeroPagina() {
-		return numeroPagina;
+		return numeropagina;
 	}
 	public void setNumeroPagina(String numeroPagina) {
-		this.numeroPagina = numeroPagina;
+		this.numeropagina = numeroPagina;
 	}
 	public int getCantidadDisponible() {
-		return cantidadDisponible;
+		return cantidaddisponible;
 	}
 	public void setCantidadDisponible(int cantidadDisponible) {
-		this.cantidadDisponible = cantidadDisponible;
+		this.cantidaddisponible = cantidadDisponible;
 	}
 	public int getEdicion() {
 		return edicion;

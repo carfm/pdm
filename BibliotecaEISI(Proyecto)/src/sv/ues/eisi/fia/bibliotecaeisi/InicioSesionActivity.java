@@ -1,6 +1,8 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
+import sv.ues.eisi.fia.bibliotecaeisi.controlwebservice.ControladorWebService;
+import sv.ues.eisi.fia.bibliotecaeisi.clases.Pais;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Usuario;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -154,23 +156,39 @@ public class InicioSesionActivity extends Activity {
 
 	public void obtenerDatos(View v) {
 
-		try {
+/*		try {
 			Intent inte = new Intent(this, ImprimirHojaPrestamoActivity.class);
 			this.startActivity(inte);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}*/
+		Object obj = new Pais("ESA","El Salvador");
+/*		Gson gson = new Gson();
+        //MiObjeto obj = new MiObjeto("Juan", "Madrid", null);
+        String jsonString = gson.toJson(new Pais("ESA","El Salvador"));
+        System.out.println("JSON: " + jsonString);*/
+        ControladorWebService parser = new ControladorWebService();
+        try {
+			parser.sendHttpRequest(obj,"sv.fia.ues.bibliotecaeisi.entidad.pais","POST");
+			salidaHost.setText("se realizo correctamente "
+				);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			salidaHost.setText(ControladorWebService.informacionError);
 		}
-
 		// LibreriasEspeciales.reproducirAudio(getApplicationContext(),1);
-		/*
-		 * ControladorWebService parser = new ControladorWebService(); String
-		 * url = urlHosting +
-		 * "iddocumento=1&ideditorial=1&idtipodocumento=1&tema=prueba2&descripcion=libronuevo&anio=2014&numeropaginas=300&cantidaddisponible=7&edicion=6"
-		 * ; try { String json = parser.obtenerRespuestaDeURL(url); JSONObject
-		 * obj = new JSONObject(json);
-		 * salidaHost.setText("Resultado de servicio hosting gratuito: " +
-		 * obj.getString("resultado")); } catch (Exception e) {
-		 * salidaHost.setText(ControladorWebService.informacionError); }
-		 */
+
+		/*ControladorWebService parser = new ControladorWebService();
+		String url = "";
+		try {
+			parser.sendPost();
+			String json = 
+			JSONObject obj = new JSONObject(json);
+			salidaHost.setText("Resultado de servicio hosting gratuito: "
+					+ obj.getString("resultado"));
+		} catch (Exception e) {
+			salidaHost.setText(ControladorWebService.informacionError);
+		}*/
+
 	}
 }

@@ -1,18 +1,11 @@
 package sv.ues.eisi.fia.bibliotecaeisi.clases;
 
 public class Autor {
-	Integer idAutor;
-	String nombre;
-	String apellido;
-	String codigoPais;
+	Integer idautor;
+	String nombreautor;
+	String apellidoautor;
+	String codigopais;
 	
-	
-	
-	
-	
-	
-	
-
 		
 	public Autor(){
 		
@@ -22,35 +15,35 @@ public class Autor {
 	public Autor(Integer idAutor, String nombre, String apellido,
 			String codigoPais) {
 		super();
-		this.idAutor = idAutor;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.codigoPais = codigoPais;
+		this.idautor = idAutor;
+		this.nombreautor = nombre;
+		this.apellidoautor = apellido;
+		this.codigopais = codigoPais;
 		
 	}
 	public Integer getIdAutor() {
-		return idAutor;
+		return idautor;
 	}
 	public void setIdAutor(Integer idAutor) {
-		this.idAutor = idAutor;
+		this.idautor = idAutor;
 	}
 	public String getNombre() {
-		return nombre;
+		return nombreautor;
 	}
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombreautor = nombre;
 	}
 	public String getApellido() {
-		return apellido;
+		return apellidoautor;
 	}
 	public void setApellido(String apellido) {
-		this.apellido = apellido;
+		this.apellidoautor = apellido;
 	}
 	public String getCodigoPais() {
-		return codigoPais;
+		return codigopais;
 	}
 	public void setCodigoPais(String codigoPais) {
-		this.codigoPais = codigoPais;
+		this.codigopais = codigoPais;
 	}
 	
 
