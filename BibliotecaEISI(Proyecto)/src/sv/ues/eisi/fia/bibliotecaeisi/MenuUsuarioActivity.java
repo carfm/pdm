@@ -124,7 +124,7 @@ public class MenuUsuarioActivity extends FragmentActivity {
 
 	private void selectItem(int position) {
 		// update the main content by replacing fragments
-		if (position < 3) {
+		if (position < 4) {
 			Bundle args = new Bundle();
 			args.putInt(FragmentMenuUsuario.OPCION, position);
 			args.putString(FragmentMenuUsuario.USER, NombreRecibido);

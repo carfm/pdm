@@ -51,12 +51,12 @@ public final class R {
         public static final int LayoutId4=0x7f0a0034;
         public static final int LinearLayout1=0x7f0a0007;
         public static final int LinearLayout2=0x7f0a002b;
-        public static final int ListadoBusquedaPrestamo=0x7f0a006c;
-        public static final int ListadoSecretaria=0x7f0a006d;
-        public static final int ListadoSubMenuSecretaria=0x7f0a006f;
-        public static final int ListadoUsuario=0x7f0a006e;
-        public static final int action_settings=0x7f0a0070;
-        public static final int action_websearch=0x7f0a0071;
+        public static final int ListadoBusquedaPrestamo=0x7f0a006e;
+        public static final int ListadoSecretaria=0x7f0a006f;
+        public static final int ListadoSubMenuSecretaria=0x7f0a0071;
+        public static final int ListadoUsuario=0x7f0a0070;
+        public static final int action_settings=0x7f0a0072;
+        public static final int action_websearch=0x7f0a0073;
         public static final int botonLimpiar=0x7f0a0047;
         public static final int btnActualizar=0x7f0a000b;
         public static final int btnAgregarUsuario=0x7f0a0043;
@@ -64,11 +64,12 @@ public final class R {
         public static final int btnDocEliminar=0x7f0a000a;
         public static final int btnDocLimpiar=0x7f0a005b;
         public static final int btnLimpiar=0x7f0a004c;
-        public static final int btnTomaFoto=0x7f0a006a;
+        public static final int btnTomaFoto=0x7f0a006c;
         public static final int butActualizarEditorial=0x7f0a0027;
         public static final int button1=0x7f0a0060;
         public static final int button2=0x7f0a0028;
         public static final int button3=0x7f0a000c;
+        public static final int bvoice=0x7f0a006a;
         public static final int content_frame=0x7f0a0063;
         public static final int content_frame2=0x7f0a0066;
         public static final int content_frame5=0x7f0a0068;
@@ -132,7 +133,8 @@ public final class R {
         public static final int listViewConsultaEditorial=0x7f0a0054;
         public static final int listViewConsultaPrestamo=0x7f0a005c;
         public static final int listViewHistorialPrestamo=0x7f0a005d;
-        public static final int mainimage=0x7f0a006b;
+        public static final int lvVoiceReturn=0x7f0a006b;
+        public static final int mainimage=0x7f0a006d;
         public static final int radioButton1=0x7f0a0040;
         public static final int radioButton2=0x7f0a0041;
         public static final int scrollView1=0x7f0a002c;
@@ -186,14 +188,15 @@ public final class R {
         public static final int activity_menu_usuario=0x7f03001b;
         public static final int activity_prestar_documento=0x7f03001c;
         public static final int activity_recibir_documento=0x7f03001d;
-        public static final int activity_tomar_foto=0x7f03001e;
-        public static final int drawer_list_item=0x7f03001f;
-        public static final int fragment_busqueda_prestamo=0x7f030020;
-        public static final int fragment_detalle_documento=0x7f030021;
-        public static final int fragment_inicio=0x7f030022;
-        public static final int fragment_menu_secretaria=0x7f030023;
-        public static final int fragment_menu_usuario=0x7f030024;
-        public static final int fragment_submenu_secretaria=0x7f030025;
+        public static final int activity_speech_busqueda_documento=0x7f03001e;
+        public static final int activity_tomar_foto=0x7f03001f;
+        public static final int drawer_list_item=0x7f030020;
+        public static final int fragment_busqueda_prestamo=0x7f030021;
+        public static final int fragment_detalle_documento=0x7f030022;
+        public static final int fragment_inicio=0x7f030023;
+        public static final int fragment_menu_secretaria=0x7f030024;
+        public static final int fragment_menu_usuario=0x7f030025;
+        public static final int fragment_submenu_secretaria=0x7f030026;
     }
     public static final class menu {
         public static final int actualizar_area=0x7f090000;
@@ -228,7 +231,8 @@ public final class R {
         public static final int menu_secretaria=0x7f09001d;
         public static final int menu_usuario=0x7f09001e;
         public static final int prestar_documento=0x7f09001f;
-        public static final int tomar_foto=0x7f090020;
+        public static final int speech_busqueda_documento=0x7f090020;
+        public static final int tomar_foto=0x7f090021;
     }
     public static final class raw {
         public static final int arch1=0x7f040000;
@@ -256,7 +260,9 @@ public final class R {
         public static final int btnLimpiar=0x7f070044;
         public static final int btnSalirAlum=0x7f07003e;
         public static final int btnSalirSecre=0x7f07003f;
+        public static final int btnTalk=0x7f070096;
         public static final int buscar=0x7f070034;
+        public static final int buscarSpeech=0x7f070097;
         public static final int buttonAprobarPrest=0x7f07007d;
         public static final int buttonArea1=0x7f07006c;
         public static final int buttonArea2=0x7f07006d;
@@ -360,6 +366,7 @@ public final class R {
         public static final int title_activity_menu_secretaria=0x7f07000f;
         public static final int title_activity_menu_usuario=0x7f07002c;
         public static final int title_activity_prestar_documento=0x7f070028;
+        public static final int title_activity_speech_busqueda_documento=0x7f070095;
         public static final int title_activity_tomar_foto=0x7f070092;
         public static final int txtAnio=0x7f070049;
         public static final int txtCantidad=0x7f07004b;

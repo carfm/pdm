@@ -146,6 +146,10 @@
             android:name="sv.ues.eisi.fia.bibliotecaeisi.TomarFotoDocumentoActivity"
             android:label="@string/title_activity_tomar_foto" >
         </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.SpeechBusquedaDocumentoActivity"
+            android:label="@string/title_activity_speech_busqueda_documento" >
+        </activity>
     </application>
 
 </manifest>

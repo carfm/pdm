@@ -1,12 +1,9 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import sv.ues.eisi.fia.bibliotecaeisi.especiales.LibreriasEspeciales;
 import android.os.Bundle;
 import android.os.Environment;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
@@ -29,27 +26,11 @@ public class TomarFotoDocumentoActivity extends Activity {
 		file.mkdirs();
 		// accion para el boton
 		boton.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
-/*				String file = ruta_fotos + getCode() + ".jpg";
-				File mi_foto = new File(file);
-				try {
-					mi_foto.createNewFile();
-				} catch (IOException ex) {
-					Log.e("ERROR ", "Error:" + ex);
-				}
-				//
-				Uri uri = Uri.fromFile(mi_foto);
-				// Abre la camara para tomar la foto
-				Intent cameraIntent = new Intent(
-						MediaStore.ACTION_IMAGE_CAPTURE);
-				// Guarda imagen
-				cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-				// Retorna a la actividad
-*/				startActivityForResult(LibreriasEspeciales.tomarFoto(), 0);
+				// llamamos a la funcion que nos permite tomar la foto y guardarla luego retornamos
+				startActivityForResult(LibreriasEspeciales.tomarFoto(), 0);
 			}
-
 		});
 	}
 
@@ -60,12 +41,4 @@ public class TomarFotoDocumentoActivity extends Activity {
 		return true;
 	}
 
-	@SuppressLint("SimpleDateFormat")
-	  private String getCode()
-	  {
-	   SimpleDateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss");
-	   String date = dateFormat.format(new Date() );
-	   String photoCode = "pic_" + date;  
-	   return photoCode;
-	  }
 }

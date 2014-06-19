@@ -154,7 +154,7 @@ public class InicioSesionActivity extends Activity {
 
 	public void obtenerDatos(View v) {
 		try {
-			Intent inte = new Intent(this,TomarFotoDocumentoActivity.class);
+			Intent inte = new Intent(this,SpeechBusquedaDocumentoActivity.class);
 			this.startActivity(inte);
 		} catch (Exception e) {
 			e.printStackTrace();

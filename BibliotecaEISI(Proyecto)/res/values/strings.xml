@@ -203,6 +203,9 @@
     <string name="hostGratuito">Hosting Gratuito</string>
     <string name="title_activity_tomar_foto">TomarFotoActivity</string>
     <string name="strTomaFoto">Tomar Foto</string>
-    <string name="imagen1"> </string>
+    <string name="imagen1"></string>
+    <string name="title_activity_speech_busqueda_documento">SpeechBusquedaDocumentoActivity</string>
+    <string name="btnTalk">Hable ahora</string>
+    <string name="buscarSpeech">Busqueda por voz</string>
 
 </resources>

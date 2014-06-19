@@ -11,13 +11,16 @@ import sv.ues.eisi.fia.bibliotecaeisi.clases.Prestamo;
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
 import sv.ues.eisi.fia.bibliotecaeisi.fragments.FragmentDialogConfirmarLibros;
 import sv.ues.eisi.fia.bibliotecaeisi.fragments.FragmentPrestamoDocumento;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.v4.app.*;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,9 +35,11 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 	private TextView idPrestamo;
 	private ListView lstListado;
 	private TextView resultados;
+	private Button buscar;
 	private Documento d;
 	private Prestamo p;
 	private String idUsuario;
+	static final int check = 1111;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,7 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 		Bundle getDatos = getIntent().getExtras();
 		idUsuario = getDatos.getString("idUsuario");
 		detallesPrestamos = new ArrayList<DetallePrestamo>();
+		
 	}
 
 	@Override
@@ -241,10 +247,45 @@ public class PrestarDocumentoActivity extends FragmentActivity {
 			}
 		});
 	}
+	public void busquedaSpeech(View v){
+		//if (v.getId() == R.id.bvoice) {
+			// Si entramos a dar clic en el boton
+			Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+			i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+					RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+			i.putExtra(RecognizerIntent.EXTRA_PROMPT, "Hable ahora ");
+			startActivityForResult(i, check);
+		//}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		lstListado = (ListView) findViewById(R.id.ListadoBusquedaPrestamo);
+		if (requestCode == check && resultCode == RESULT_OK) {
+			ArrayList<String> results = data
+					.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+			lstListado.setAdapter(new ArrayAdapter<String>(this,
+					android.R.layout.simple_list_item_1, results));
+			lstListado.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> list, View view, int pos,
+						long id) {
+					busqueda = (EditText) findViewById(R.id.editText1);
+					buscar = (Button)findViewById(R.id.button1);
+					String s;
+					s = (String) list.getAdapter().getItem(pos);
+					busqueda.setText(s);
+					buscar.performClick();
+				}
+			});
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
 
-	protected void onPause() {
+	/*protected void onPause() {
 		super.onPause();
 		System.out.println("Salio");
 		finish(); // termina la actividad
-	}
+	}*/
 }
