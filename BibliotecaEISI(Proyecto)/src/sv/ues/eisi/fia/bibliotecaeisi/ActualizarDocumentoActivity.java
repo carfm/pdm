@@ -132,9 +132,12 @@ public class ActualizarDocumentoActivity extends Activity {
                 "&numeropaginas="+URLEncoder.encode(documento.getNumeroPagina()) +
                  "&cantidaddisponible="+documento.getCantidadDisponible() +
                  "&edicion="+documento.getEdicion();
-	
-		Toast.makeText(	this,control.WSactualiza(parametros), Toast.LENGTH_SHORT).show();
-		Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+		int resul=Integer.parseInt(control.WSactualiza(parametros));
+		if(resul==1){
+			Toast.makeText(	this,"Actualizado con exito en webhost ", Toast.LENGTH_SHORT).show();
+			}
+		//Toast.makeText(	this,"NO Actualizado en webhost ", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, estado+"se actualizo en sqlite", Toast.LENGTH_SHORT).show();
 	
 	}
 
