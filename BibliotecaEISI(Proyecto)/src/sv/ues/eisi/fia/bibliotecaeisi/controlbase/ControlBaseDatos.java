@@ -814,4 +814,24 @@ public class ControlBaseDatos {
 			//salidaHost.setText(ControladorWebService.informacionError);
 		}
 	}
+	
+	
+	public String WSeliminar(String parametros){
+		ControladorWebService parser1 = new ControladorWebService();
+		
+		try {
+			String json = parser1.obtenerRespuestaDeURL(parametros);
+			JSONObject obj = new JSONObject(json);
+			return obj.getString("resultado");
+			
+		} catch (Exception e) {
+			return "error";
+		
+		}
+		
+	
+	}
+
+	
+	
 }
