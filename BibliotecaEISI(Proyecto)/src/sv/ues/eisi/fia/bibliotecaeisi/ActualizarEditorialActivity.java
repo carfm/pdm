@@ -1,8 +1,6 @@
 package sv.ues.eisi.fia.bibliotecaeisi;
 
-import sv.ues.eisi.fia.bibliotecaeisi.clases.Documento;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Editorial;
-import sv.ues.eisi.fia.bibliotecaeisi.clases.Pais;
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
 import sv.ues.eisi.fia.bibliotecaeisi.controlwebservice.ControladorWebService;
 import android.os.Bundle;

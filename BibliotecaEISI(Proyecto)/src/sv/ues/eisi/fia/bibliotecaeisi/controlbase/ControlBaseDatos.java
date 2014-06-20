@@ -1,9 +1,7 @@
 package sv.ues.eisi.fia.bibliotecaeisi.controlbase;
 
-import java.net.URLEncoder;
 
 import org.json.JSONObject;
-
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Area;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Autor;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.DetallePrestamo;
@@ -50,7 +48,7 @@ public class ControlBaseDatos {
 			"nombreUsuario", "apellidoUsuario", "contrasenia", "activo", "tipo" };
 	private static String urlHosting = "http://pdm115.freeiz.com/";
 	private static String urlHostingInsertarPrestamo = "insertar_prestamo.php?";
-	private static String urlHostingActualiza = "actualizar_doc.php?";
+	//private static String urlHostingActualiza = "actualizar_doc.php?";
 
 	public ControlBaseDatos(Context ctx) {
 		this.context = ctx;

@@ -21,9 +21,9 @@ public class FragmentMenuUsuario extends Fragment {
 	public static final String USER = "nombre_user";
 	public static final String IDUSER = "id_user";
 	final String matriz[][] =new String[][] {
-			{"PrestarDocumentoActivity","HistorialPrestamoActivity"},
-			{"HistorialEntregaActivity",""},
-			{"TomarFotoDocumentoActivity",""}};
+			{"PrestarDocumentoActivity","HistorialPrestamoActivity","ImprimirHojaPrestamoActivity"},
+			{"HistorialEntregaActivity","",""},
+			{"TomarFotoDocumentoActivity","",""}};
 	private String[] datos;
 	private String[] datos1;
 	private String[] datos2;

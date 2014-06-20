@@ -2,10 +2,8 @@ package sv.ues.eisi.fia.bibliotecaeisi;
 
 import java.net.URLEncoder;
 
-import org.json.JSONObject;
 import sv.ues.eisi.fia.bibliotecaeisi.clases.Documento;
 import sv.ues.eisi.fia.bibliotecaeisi.controlbase.ControlBaseDatos;
-import sv.ues.eisi.fia.bibliotecaeisi.controlwebservice.ControladorWebService;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;

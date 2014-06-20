@@ -57,7 +57,7 @@ public class ImprimirHojaPrestamoActivity extends Activity {
 		private int pageHeight;
 		private int pageWidth;
 		public PdfDocument myPdfDocument;
-		public int totalpages = 4;
+		public int totalpages = 1;
 
 		public MyPrintDocumentAdapter(Context context) {
 			this.context = context;
@@ -150,12 +150,12 @@ public class ImprimirHojaPrestamoActivity extends Activity {
 			Paint paint = new Paint();
 			paint.setColor(Color.BLACK);
 			paint.setTextSize(40);
-			canvas.drawText("Test Print Document Page " + pagenumber,
+			canvas.drawText("Hoja de Prestamo" + pagenumber,
 					leftMargin, titleBaseLine, paint);
 
 			paint.setTextSize(14);
 			canvas.drawText(
-					"This is some test content to verify that custom document printing works",
+					"Cuerpo de prestamo",
 					leftMargin, titleBaseLine + 35, paint);
 
 			if (pagenumber % 2 == 0)
@@ -163,10 +163,10 @@ public class ImprimirHojaPrestamoActivity extends Activity {
 			else
 				paint.setColor(Color.GREEN);
 
-			PageInfo pageInfo = page.getInfo();
+//			PageInfo pageInfo = page.getInfo();
 
-			canvas.drawCircle(pageInfo.getPageWidth() / 2,
-					pageInfo.getPageHeight() / 2, 150, paint);
+//			canvas.drawCircle(pageInfo.getPageWidth() / 2,
+//					pageInfo.getPageHeight() / 2, 150, paint);
 		}
 	}
 }
