@@ -33,7 +33,10 @@ public class EliminarAutorActivity extends Activity {
 		
 		if(regEliminadas.equals(respuesta)){
 			String parametros=urlHosting+urlHostingEliminar+"idautor="+autor.getIdAutor();
-	     Toast.makeText(this,controlhelper.WSeliminar(parametros), Toast.LENGTH_SHORT).show();
+			int resul=Integer.parseInt(controlhelper.WSeliminar(parametros));
+			if(resul==1){
+	     Toast.makeText(this,"registro eliminado exitosamente!!!", Toast.LENGTH_SHORT).show();
+	     }else { Toast.makeText(this,"error al eliminar registro!!!", Toast.LENGTH_SHORT).show();}
 			}
 
 		Toast.makeText(this, "cantidad de registros eliminados:"+regEliminadas, Toast.LENGTH_SHORT).show();
