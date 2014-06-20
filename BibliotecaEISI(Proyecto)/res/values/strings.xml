@@ -110,7 +110,7 @@
     <string name="btnActualizar">Actualizar</string>
     <string name="btnEliminar">Eliminar</string>
     <string name="titleDocEliminar">Eliminar Documento</string>
-    <string name="titleDocActualizar">Actualuzar Documento</string>
+    <string name="titleDocActualizar">Actualizar Documento</string>
     <string name="titleDocConsultar">Consultar Documento</string>
     <string name="titleDocAgregar">Agregar Documento</string>
     <string name="Idautor">IdAutor</string>
