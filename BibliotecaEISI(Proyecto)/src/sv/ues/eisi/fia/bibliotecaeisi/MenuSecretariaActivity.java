@@ -132,7 +132,7 @@ public class MenuSecretariaActivity extends FragmentActivity {
 
 	private void selectItem(int position) {
 		// update the main content by replacing fragments
-		if(position<4){
+		if(position<5){
 			Bundle args = new Bundle();
 			args.putInt(FragmentMenuSecretaria.OPCION, position);
 			args.putString(FragmentMenuSecretaria.USER,NombreRecibido);

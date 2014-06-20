@@ -158,26 +158,26 @@ public class InicioSesionActivity extends Activity {
 
 	public void obtenerDatos(View v) {
 
-/*		try {
-			Intent inte = new Intent(this, ImprimirHojaPrestamoActivity.class);
+		try {
+			Intent inte = new Intent(this, Escaner.class);
 			this.startActivity(inte);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}*/
-		Object obj = new Pais("ESA","El Salvador");
+		}
+		//Object obj = new Pais("ESA","El Salvador");
 /*		Gson gson = new Gson();
         //MiObjeto obj = new MiObjeto("Juan", "Madrid", null);
         String jsonString = gson.toJson(new Pais("ESA","El Salvador"));
         System.out.println("JSON: " + jsonString);*/
-        ControladorWebService parser = new ControladorWebService();
-        try {
+       // ControladorWebService parser = new ControladorWebService();
+/*        try {
 			parser.sendHttpRequest(obj,"sv.fia.ues.bibliotecaeisi.entidad.pais","POST");
 			salidaHost.setText("se realizo correctamente "
 				);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			salidaHost.setText(ControladorWebService.informacionError);
-		}
+		}*/
 		// LibreriasEspeciales.reproducirAudio(getApplicationContext(),1);
 
 		/*ControladorWebService parser = new ControladorWebService();

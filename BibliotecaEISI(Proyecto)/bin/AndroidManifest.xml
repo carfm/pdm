@@ -149,8 +149,32 @@
             android:label="@string/title_activity_tomar_foto" >
         </activity>
         <activity
-            android:name="sv.ues.eisi.fia.bibliotecaeisi.ImprimirHojaPrestamoActivity"
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.Escaner"
             android:label="@string/title_activity_imprimir_hoja_prestamo" >
+        </activity>
+        <activity
+            android:name="com.google.zxing.client.android.CaptureActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden"
+             >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.zxing.client.android.SCAN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="sv.ues.eisi.fia.bibliotecaeisi.ResultadoActivity"
+            android:label="@string/title_activity_resultado" >
         </activity>
     </application>
 

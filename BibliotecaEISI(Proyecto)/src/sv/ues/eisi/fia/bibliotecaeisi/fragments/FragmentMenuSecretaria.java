@@ -16,10 +16,14 @@ import android.widget.TextView;
 
 public class FragmentMenuSecretaria extends Fragment {
 
-	final String matriz[][] =new String[][] {{"AprobarPrestamosActivity", "ConsultarPrestamosActivity","RecibirDocumentoActivity"},{"AgregarUsuarioActivity","",""}};
+	final String matriz[][] =new String[][] {
+			{"AprobarPrestamosActivity", "ConsultarPrestamosActivity","RecibirDocumentoActivity"},
+			{"AgregarUsuarioActivity","",""},
+			{"Escaner","",""}};
 	private String[] datos;
 	private String[] datos1;
 	private String[] datos2;
+	private String[] datos3;
 	private ListView lstListado;
 	private TextView txtVnombre;
 	Activity context;
@@ -41,7 +45,10 @@ public class FragmentMenuSecretaria extends Fragment {
 					R.array.opciones_prestamos_secretaria);
 			datos2= getResources().getStringArray(
 					R.array.opciones_usuarios_secretaria);
+			datos3= getResources().getStringArray(
+					R.array.opciones_otros_secretaria);
 			return inflater.inflate(R.layout.fragment_menu_secretaria,
+					
 					container, false);
 		} else {
 			return inflater.inflate(R.layout.fragment_inicio,
@@ -65,6 +72,9 @@ public class FragmentMenuSecretaria extends Fragment {
 				break;
 			case 3:
 				datos = this.datos2;
+				break;
+			case 4:
+				datos = this.datos3;
 				break;
 			}
 			

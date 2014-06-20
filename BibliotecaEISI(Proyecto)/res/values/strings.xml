@@ -6,6 +6,7 @@
         <item>Biblioteca</item>
         <item>Prestamos</item>
         <item>Usuarios</item>
+        <item>Otros</item>
         <item>Cerrar Sesion</item>
     </string-array>
     <string-array name="opciones_usuario">
@@ -33,13 +34,15 @@
         <item>Consultar Prestamos</item>
         <item>Recibir Documentos</item>
     </string-array>
+    <string-array name="opciones_otros_secretaria">
+        <item>Escanear codigo Documento</item>
+    </string-array>
     <string-array name="opciones_usuarios_secretaria">
         <item>Agregar Usuario</item>
     </string-array>
     <string-array name="opciones_prestamos_usuario">
         <item>Prestar Documentos</item>
         <item>Historial de Prestamos</item>
-        <item>Imprimir hoja de prestamo</item>
     </string-array>
     <string-array name="opciones_entregas_usuario">
         <item>Historial de Entregas</item>
@@ -174,7 +177,9 @@
     <string name="strTomaFoto">Tomar Foto</string>
     <string name="imagen1"></string>
     <string name="buscarSpeech">Busqueda por voz</string>
-    <string name="title_activity_imprimir_hoja_prestamo">ImprimirHojaPrestamoActivity</string>
-    <string name="print_string">Imprimir</string>
+    <string name="title_activity_imprimir_hoja_prestamo">Escaner de codigo documento</string>
+    <string name="print_string">Escanear</string>
+    <string name="title_activity_resultado">ResultadoActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
